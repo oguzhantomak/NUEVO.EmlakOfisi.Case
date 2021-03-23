@@ -12,5 +12,14 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         {
             return View();
         }
+        public IActionResult Ilanlar()
+        {
+            return View();
+        }
+
+        public IActionResult Emlakcilar()
+        {
+            return View();
+        }
     }
 }

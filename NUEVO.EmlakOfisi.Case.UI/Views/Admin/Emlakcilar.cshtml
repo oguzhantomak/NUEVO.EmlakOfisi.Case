@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Emlakçılar";
+    Layout = "~/Views/Shared/_LayoutAI.cshtml";
+}
+
+<a href="/admin/emlakciekle">
+    <button type="button" class="btn pull-right btn-default waves-effect waves-light m-b-20">
+        Emlakçı Ekle
+        <span class="btn-label btn-label-right">
+            <i class="fa fa-plus"></i>
+        </span>
+    </button>
+</a>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card-box">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>KOD</th>
+                    <th>ADI</th>
+                    <th>AÇIKLAMA</th>
+                    <th>OLUŞTURULMA TARİHİ</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                        <tr>
+                            <td>Id</td>
+                            <td>Code</td>
+                            <td>Name</td>
+                            <td>Description</td>
+                            <td>CreatedDate</td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
