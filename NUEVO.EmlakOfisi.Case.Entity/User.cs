@@ -19,5 +19,10 @@ namespace NUEVO.EmlakOfisi.Case.Entity
         /// Kaydın güncellenme tarihi
         /// </summary>
         public DateTime UpdatedDate { get; set; }
+
+        /// <summary>
+        /// Eğer kullanıcı Emlakçı ise firma adı girebilir
+        /// </summary>
+        public string FirmaAdi { get; set; }
     }
 }
