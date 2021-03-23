@@ -21,8 +21,4 @@
     <ProjectReference Include="..\NUEVO.EmlakOfisi.Case.Data\NUEVO.EmlakOfisi.Case.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>

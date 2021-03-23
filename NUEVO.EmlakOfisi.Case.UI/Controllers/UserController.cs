@@ -1,19 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 {
-    public class HomeController : Controller
+    public class UserController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
 
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
