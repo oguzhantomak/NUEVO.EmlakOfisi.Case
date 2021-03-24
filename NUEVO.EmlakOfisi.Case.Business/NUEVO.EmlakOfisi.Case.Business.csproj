@@ -7,8 +7,11 @@
   <ItemGroup>
     <Folder Include="Abstract\" />
     <Folder Include="Concrete\" />
-    <Folder Include="Abstract\" />
     <Folder Include="Concrete\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NUEVO.EmlakOfisi.Case.Entity\NUEVO.EmlakOfisi.Case.Entity.csproj" />
   </ItemGroup>
 
 </Project>

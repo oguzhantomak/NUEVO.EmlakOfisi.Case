@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,18 @@ namespace NUEVO.EmlakOfisi.Case.Entity
         /// <summary>
         /// Eğer kullanıcı Emlakçı ise firma adı girebilir
         /// </summary>
+        [Required]
         public string FirmaAdi { get; set; }
+
+        /// <summary>
+        /// Kullanıcının ismi
+        /// </summary>
+        public string Ad { get; set; }
+
+        /// <summary>
+        /// Kullanıcının soyadı
+        /// </summary>
+        public string Soyad { get; set; }
 
         #region [ Integration ]
 
