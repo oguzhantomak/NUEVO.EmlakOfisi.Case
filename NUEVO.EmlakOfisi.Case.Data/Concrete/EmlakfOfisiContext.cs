@@ -36,5 +36,8 @@ namespace NUEVO.EmlakOfisi.Case.Data.Concrete
         }
 
         public DbSet<Company> Companies { get; set; }
+        public DbSet<Ilan> Ilans { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
     }
 }
