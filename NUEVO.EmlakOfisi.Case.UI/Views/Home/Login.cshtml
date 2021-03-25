@@ -1,34 +1,94 @@
-﻿@model NUEVO.EmlakOfisi.Case.Entity.DTO.User.UserLoginDto
+﻿@*@model NUEVO.EmlakOfisi.Case.Entity.DTO.User.UserLoginDto
 
-@{
-    ViewData["Title"] = "Giriş";
-}
+    @{
+        ViewData["Title"] = "Giriş";
+    }
 
-<h2>Giriş</h2>
+    <h2>Giriş</h2>
 
-<h4>Kullanıcı Girişi</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4 offset-md-4">
-        <form asp-action="Login" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+    <h4>Kullanıcı Girişi</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" asp-for="RememberMe" class="form-control" /> Beni Hatırla
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Giriş Yap" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>*@
+
+@model NUEVO.EmlakOfisi.Case.Entity.DTO.User.UserLoginDto
+
+
+<!-- Container -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <!--Tab -->
+            <div class="my-account style-1 margin-top-5 margin-bottom-40">
+                
+                    <h3>Giriş</h3>
+
+                <div class="tabs-container alt">
+
+                    <!-- Login -->
+                    <div class="tab-content" id="tab1" style="display: none;">
+                        <form asp-action="Login" method="post">
+
+                            <p class="form-row form-row-wide">
+                                <label asp-for="Email">
+                                    Email:
+                                    <i class="im im-icon-Male"></i>
+                                    <input type="text" class="input-text" asp-for="Email" />
+                                </label>
+                            </p>
+
+                            <p class="form-row form-row-wide">
+                                <label asp-for="Password">
+                                    Password:
+                                    <i class="im im-icon-Lock-2"></i>
+                                    <input class="input-text" asp-for="Password" />
+                                </label>
+                            </p>
+
+                            <p class="form-row">
+                                <input type="submit" class="button border margin-top-10" name="login" value="Giriş" />
+
+                                <label asp-for="RememberMe" class="rememberme">
+                                    <input name="rememberme" asp-for="RememberMe" /> Beni Hatırla
+                                </label>
+                            </p>
+
+                            <p class="lost_password">
+                                <a href="#">Şifremi Unuttum</a>
+                            </p>
+
+                        </form>
+                    </div>
+
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="checkbox" asp-for="RememberMe" class="form-control"/> Beni Hatırla
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Giriş Yap" class="btn btn-default" />
-            </div>
-        </form>
+
+
+
+        </div>
     </div>
-</div>
 
+</div>
+<!-- Container / End -->
