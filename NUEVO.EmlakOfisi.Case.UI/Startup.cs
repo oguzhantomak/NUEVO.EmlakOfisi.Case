@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NUEVO.EmlakOfisi.Case.Data;
@@ -29,12 +30,15 @@ namespace NUEVO.EmlakOfisi.Case.UI
         {
             services.AddControllersWithViews();
 
+            // DB iþlemleri
             var dataAssemblyName = typeof(EmlakfOfisiContext).Assembly.GetName().Name;
             var x = Configuration.GetConnectionString("Default");
             services.AddDbContext<EmlakfOfisiContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Default"), x => x.MigrationsAssembly(dataAssemblyName)));
-
+            
+            // Identity iþlemleri
             services.AddIdentity<User, Role>().AddEntityFrameworkStores<EmlakfOfisiContext>();
 
+            // Identity konfigürasyonlarý, gerekirse diye aþaðýda commentli olarak býraktým.
             services.Configure<IdentityOptions>(
                 options =>
                 {
@@ -49,6 +53,22 @@ namespace NUEVO.EmlakOfisi.Case.UI
                     options.User.RequireUniqueEmail = true;
 
                 });
+
+            // Cookie iþlemleri
+            CookieBuilder cookieBuilder = new CookieBuilder();
+
+            cookieBuilder.Name = "EmlakOfisi";
+            cookieBuilder.HttpOnly = false;
+            cookieBuilder.SameSite = SameSiteMode.Lax;
+            cookieBuilder.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+
+            services.ConfigureApplicationCookie(opts =>
+            {
+                opts.LoginPath = new PathString("/Home/Login");
+                opts.Cookie = cookieBuilder;
+                opts.SlidingExpiration = true;
+                opts.ExpireTimeSpan = System.TimeSpan.FromDays(60);
+            });
 
         }
 
@@ -66,6 +86,8 @@ namespace NUEVO.EmlakOfisi.Case.UI
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
