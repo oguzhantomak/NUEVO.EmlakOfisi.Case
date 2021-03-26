@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace NUEVO.EmlakOfisi.Case.Entity.DTO.User
 {
-    public class UserLoginDto
+    public class ResetPasswordDto
     {
         [Required(ErrorMessage = "Email alanı zorunludur"), DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Şifre zorunludur"), DataType(DataType.Password)]
-        [Display(Name = "Şifre")]
+        [Display(Name = "Yeni Şifre")]
         public string Password { get; set; }
-
-        public bool RememberMe { get; set; }
     }
 }

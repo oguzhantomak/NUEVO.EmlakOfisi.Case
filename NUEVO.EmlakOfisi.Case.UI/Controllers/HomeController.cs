@@ -45,7 +45,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 
             if (ModelState.IsValid)
             {
-                User user = await _userManager.FindByEmailAsync(model.Email);
+                var user = await _userManager.FindByEmailAsync(model.Email);
 
                 if (user != null)
                 {
@@ -105,6 +105,89 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 
             }
 
+            return View(model);
+        }
+
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ResetPassword(ResetPasswordDto model)
+        {
+            // DB'de bu email ile bir kayıt var mı kontrolü
+            var user = _userManager.FindByEmailAsync(model.Email).Result;
+
+            if (user != null)
+            {
+                // Kullanıcı bilgileri ile bir token oluştur
+                string passwordResetToken = _userManager.GeneratePasswordResetTokenAsync(user).Result;
+
+                string passwordResetLink = Url.Action("ResetPasswordConfirm", "Home", new
+                {
+                    userId = user.Id,
+                    token = passwordResetToken
+                }, HttpContext.Request.Scheme);
+
+                // oluşturulan şifre yenileme linkini static metodumuza gönderip metotu çalıştırıyoruz.
+                Helper.PasswordReset.PasswordResetSendEmail(passwordResetLink);
+
+                ViewBag.status = "success";
+            }
+            else
+            {
+                ModelState.AddModelError("", "Bu mail adresi sistemde kayıtlı değildir!");
+            }
+
+            return View(model);
+        }
+
+        public IActionResult ResetPasswordConfirm(string userId, string token)
+        {
+            // Tempdataya kaydedip post metodunda kullanacağız.
+            TempData["userId"] = userId;
+            TempData["token"] = token;
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPasswordConfirm([Bind("Password")] ResetPasswordDto model)
+        {
+            // Tempdatadan token ve userId bilgilerini al
+            string token = TempData["token"].ToString();
+            string userId = TempData["userId"].ToString();
+
+            //Db'de bu id'ye ait user var mı diye kontrol et
+            var user = await _userManager.FindByIdAsync(userId);
+
+            //Eğer böyle bir user var ise
+            if (user != null)
+            {
+                // O user'ın passwordunu resetle
+                var result = await _userManager.ResetPasswordAsync(user, token, model.Password);
+
+                // Şifre sıfırlama başarılı ise
+                if (result.Succeeded)
+                {
+                    // Kullanıcının security stampini update et. Bunu yapmamızın amacı kullanıcının cookiesinde kayıtlı security stamp ile sitede dolaşamaması, logine yönlendirilmesi. Eski şifre ile sitede dolaşmamalı :)
+                    await _userManager.UpdateSecurityStampAsync(user);
+
+                    ViewBag.status = "success";
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Bir hata meydana geldi. Tekrar deneyiniz.");
+            }
             return View(model);
         }
 

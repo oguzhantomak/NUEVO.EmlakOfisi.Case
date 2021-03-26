@@ -36,16 +36,17 @@ namespace NUEVO.EmlakOfisi.Case.UI
             services.AddDbContext<EmlakfOfisiContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Default"), x => x.MigrationsAssembly(dataAssemblyName)));
             
             // Identity iþlemleri
-            services.AddIdentity<User, Role>().AddEntityFrameworkStores<EmlakfOfisiContext>();
+            services.AddIdentity<User, Role>().AddEntityFrameworkStores<EmlakfOfisiContext>().AddDefaultTokenProviders();
 
             // Identity konfigürasyonlarý, gerekirse diye aþaðýda commentli olarak býraktým.
             services.Configure<IdentityOptions>(
                 options =>
                 {
-                    //options.Password.RequireDigit = true;
-                    //options.Password.RequireLowercase = true;
-                    //options.Password.RequireUppercase = true;
-                    //options.Password.RequiredLength = 8;
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequiredLength = 0;
+                    options.Password.RequireNonAlphanumeric = false;
 
                     //options.Lockout.MaxFailedAccessAttempts = 5;
                     //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
