@@ -181,9 +181,8 @@
                     <div class="right-side">
                         <!-- Header Widget -->
                         <div class="header-widget">
-                            <a asp-action="Login" class="sign-in"><i class="fa fa-user"></i>Giriş Yap</a>
-                            <a asp-action="SignUp" class="sign-in"><i class="fa fa-user"></i>Üye Ol</a>
-                            @*<a asp-action="Create" asp-controller="Ilan" class="button medium"><i class="im im-icon-Add"></i>İlan Oluştur</a>*@
+                            <a asp-action="Profil" asp-controller="Member" class="sign-in"><i class="im im-icon-Profile"></i>Profil</a>
+                            <a asp-action="Create" asp-controller="Ilan" class="button medium"><i class="im im-icon-Add"></i>İlan Oluştur</a>
                             <a href="/admin/index" class="button border">Admin Panel</a>
                         </div>
                         <!-- Header Widget / End -->
@@ -199,8 +198,8 @@
         <!-- Header Container / End -->
         <!-- Banner
         ================================================== -->
-        
-            @RenderBody()
+
+        @RenderBody()
 
         <!-- Footer
         ================================================== -->
@@ -310,3 +309,6 @@
 
 </body>
 </html>
+
+
+

@@ -14,11 +14,13 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         }
         public IActionResult Ilanlar()
         {
+            // TODO Bütün ilanlar listelenecek.
             return View();
         }
 
         public IActionResult Emlakcilar()
         {
+            //TODO Rolü emlakçı olanlar listelenecek.
             return View();
         }
     }

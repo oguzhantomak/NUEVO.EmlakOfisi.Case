@@ -1,0 +1,266 @@
+﻿@model NUEVO.EmlakOfisi.Case.Entity.User
+@*@model IEnumerable<NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan.ListIlanProfileDto>
+
+    @{
+        ViewData["Title"] = "Profil";
+    }
+
+    <h2>Profil</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IlanBasligi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IlanIcerigi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fiyat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tur)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OdaSayisi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BanyoSayisi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BulunduguKat)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BinaToplamKatSayisi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmlakTuruId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CountryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CityName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GorselLinki)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IlanBasligi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IlanIcerigi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fiyat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OdaSayisi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BanyoSayisi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BulunduguKat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BinaToplamKatSayisi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmlakTuruId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GorselLinki)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>*@
+
+<!DOCTYPE html>
+<head>
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>Findeo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/color.css">
+
+</head>
+
+<body>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+        <!-- Titlebar
+        ================================================== -->
+        <div id="titlebar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <h2>My Profile</h2>
+
+                        <!-- Breadcrumbs -->
+                        <nav id="breadcrumbs">
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li>My Profile</li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Content
+        ================================================== -->
+        <div class="container">
+            <div class="row">
+
+
+                <!-- Widget -->
+                <div class="col-md-4">
+                    <div class="sidebar left">
+
+                        <div class="my-account-nav-container">
+
+                            <ul class="my-account-nav">
+                                <li class="sub-nav-title">Hesabım</li>
+                                <li><a href="my-profile.html" class="current"><i class="sl sl-icon-user"></i> Profilim</a></li>
+                                <li><a href="/member/ilanlarim"><i class="sl sl-icon-docs"></i> İlanlarım</a></li>
+                                <li><a href="/ilan/create"><i class="sl sl-icon-action-redo"></i> Yeni İlan Oluştur</a></li>
+                                <li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Şifre Değiştir</a></li>
+                                <li><a href="#"><i class="sl sl-icon-power"></i> Çıkış Yap</a></li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+                    <div class="row">
+
+
+                        <div class="col-md-8 my-profile">
+                            <h4 class="margin-top-0 margin-bottom-30">My Account</h4>
+
+                            <label>Your Name</label>
+                            <input value="Jennie Wilson" type="text">
+
+                            <label>Your Title</label>
+                            <input value="Agent In New York" type="text">
+
+                            <label>Phone</label>
+                            <input value="(123) 123-456" type="text">
+
+                            <label>Email</label>
+                            <input value="jennie@example.com" type="text">
+
+
+                            <h4 class="margin-top-50 margin-bottom-25">About Me</h4>
+                            <textarea name="about" id="about" cols="30" rows="10">Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</textarea>
+
+
+                            <h4 class="margin-top-50 margin-bottom-0">Social</h4>
+
+                            <label><i class="fa fa-twitter"></i> Twitter</label>
+                            <input value="https://www.twitter.com/" type="text">
+
+                            <label><i class="fa fa-facebook-square"></i> Facebook</label>
+                            <input value="https://www.facebook.com/" type="text">
+
+                            <label><i class="fa fa-google-plus"></i> Google+</label>
+                            <input value="https://www.google.com/" type="text">
+
+                            <label><i class="fa fa-linkedin"></i> Linkedin</label>
+                            <input value="https://www.linkedin.com/" type="text">
+
+
+                            <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
+                        </div>
+
+                        <div class="col-md-4">
+                            <!-- Avatar -->
+                            <div class="edit-profile-photo">
+                                <img src="images/agent-02.jpg" alt="">
+                                <div class="change-photo-btn">
+                                    <div class="photoUpload">
+                                        <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                        <input type="file" class="upload" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Back To Top Button -->
+        <div id="backtotop"><a href="#"></a></div>
+
+
+        <!-- Scripts
+        ================================================== -->
+        <script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="scripts/jquery-migrate-3.1.0.min.js"></script>
+        <script type="text/javascript" src="scripts/chosen.min.js"></script>
+        <script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
+        <script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="scripts/rangeSlider.js"></script>
+        <script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
+        <script type="text/javascript" src="scripts/slick.min.js"></script>
+        <script type="text/javascript" src="scripts/masonry.min.js"></script>
+        <script type="text/javascript" src="scripts/mmenu.min.js"></script>
+        <script type="text/javascript" src="scripts/tooltips.min.js"></script>
+        <script type="text/javascript" src="scripts/custom.js"></script>
+
+
+
+
+
+    </div>
+    <!-- Wrapper / End -->
+
+
+</body>
+</html>

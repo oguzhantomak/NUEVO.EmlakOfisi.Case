@@ -18,7 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NUEVO.EmlakOfisi.Case.Business\NUEVO.EmlakOfisi.Case.Business.csproj" />
     <ProjectReference Include="..\NUEVO.EmlakOfisi.Case.Data\NUEVO.EmlakOfisi.Case.Data.csproj" />
+    <ProjectReference Include="..\NUEVO.EmlakOfisi.Case.Entity\NUEVO.EmlakOfisi.Case.Entity.csproj" />
   </ItemGroup>
 
 </Project>

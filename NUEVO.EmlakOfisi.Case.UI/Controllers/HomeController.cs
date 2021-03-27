@@ -58,7 +58,8 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                         {
                             return Redirect(TempData["ReturnUrl"].ToString());
                         }
-                        return RedirectToAction("Index", "Member");
+                        TempData["status"] = "success";
+                        return RedirectToAction("Profil", "Member");
                     }
                 }
                 else

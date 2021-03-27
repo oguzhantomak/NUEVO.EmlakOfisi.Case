@@ -10,6 +10,10 @@ namespace NUEVO.EmlakOfisi.Case.Entity
 {
     public class User : IdentityUser<int>
     {
+        public User()
+        {
+            CreatedDate = DateTime.UtcNow;
+        }
 
         /// <summary>
         /// Kaydın oluşturulma tarihi

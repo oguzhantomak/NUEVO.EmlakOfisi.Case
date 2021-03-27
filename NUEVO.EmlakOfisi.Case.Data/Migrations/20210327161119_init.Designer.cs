@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NUEVO.EmlakOfisi.Case.Data.Migrations
 {
     [DbContext(typeof(EmlakfOfisiContext))]
-    [Migration("20210324201049_init")]
+    [Migration("20210327161119_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -205,6 +205,30 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                     b.ToTable("Countries");
                 });
 
+            modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.EmlakTuru", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("EmlakTuruAdi")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmlakTuru");
+                });
+
             modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.Ilan", b =>
                 {
                     b.Property<int>("Id")
@@ -230,8 +254,8 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<string>("EmlakTuru")
-                        .HasColumnType("text");
+                    b.Property<int>("EmlakTuruId")
+                        .HasColumnType("integer");
 
                     b.Property<double>("Fiyat")
                         .HasColumnType("double precision");
@@ -248,8 +272,8 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("text");
 
-                    b.Property<string>("Tur")
-                        .HasColumnType("text");
+                    b.Property<bool>("Tur")
+                        .HasColumnType("boolean");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("timestamp without time zone");
@@ -262,6 +286,8 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                     b.HasIndex("CityId");
 
                     b.HasIndex("CountryId");
+
+                    b.HasIndex("EmlakTuruId");
 
                     b.HasIndex("UserId");
 
@@ -460,6 +486,12 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("NUEVO.EmlakOfisi.Case.Entity.EmlakTuru", "EmlakTuru")
+                        .WithMany()
+                        .HasForeignKey("EmlakTuruId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("NUEVO.EmlakOfisi.Case.Entity.User", "User")
                         .WithMany("Ilans")
                         .HasForeignKey("UserId")
@@ -469,6 +501,8 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                     b.Navigation("City");
 
                     b.Navigation("Country");
+
+                    b.Navigation("EmlakTuru");
 
                     b.Navigation("User");
                 });

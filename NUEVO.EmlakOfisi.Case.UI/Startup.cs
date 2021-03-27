@@ -10,8 +10,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using NUEVO.EmlakOfisi.Case.Business.Abstract;
+using NUEVO.EmlakOfisi.Case.Business.Concrete;
 using NUEVO.EmlakOfisi.Case.Data;
+using NUEVO.EmlakOfisi.Case.Data.Abstract;
 using NUEVO.EmlakOfisi.Case.Data.Concrete;
+using NUEVO.EmlakOfisi.Case.Data.Concrete.EfCore;
 using NUEVO.EmlakOfisi.Case.Entity;
 
 namespace NUEVO.EmlakOfisi.Case.UI
@@ -28,13 +32,16 @@ namespace NUEVO.EmlakOfisi.Case.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped(typeof(IIlanRepository), typeof(EfCoreIlanRepository));
+            services.AddScoped(typeof(IIlanService), typeof(IlanManager));
+
             services.AddControllersWithViews();
 
             // DB iþlemleri
             var dataAssemblyName = typeof(EmlakfOfisiContext).Assembly.GetName().Name;
             var x = Configuration.GetConnectionString("Default");
             services.AddDbContext<EmlakfOfisiContext>(options => options.UseNpgsql(Configuration.GetConnectionString("Default"), x => x.MigrationsAssembly(dataAssemblyName)));
-            
+
             // Identity iþlemleri
             services.AddIdentity<User, Role>().AddEntityFrameworkStores<EmlakfOfisiContext>().AddDefaultTokenProviders();
 

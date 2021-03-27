@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NUEVO.EmlakOfisi.Case.Data.Migrations
 {
     [DbContext(typeof(EmlakfOfisiContext))]
-    [Migration("20210323191346_1st")]
-    partial class _1st
+    [Migration("20210327212050_initv3")]
+    partial class initv3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,6 +122,41 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.City", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("CityName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("text");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("PhoneCode")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.Company", b =>
                 {
                     b.Property<int>("Id")
@@ -144,6 +179,122 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("CountryName")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.EmlakTuru", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("EmlakTuruAdi")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmlakTurus");
+                });
+
+            modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.Ilan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<byte>("BanyoSayisi")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("BinaToplamKatSayisi")
+                        .HasColumnType("smallint");
+
+                    b.Property<byte?>("BulunduguKat")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("CityId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CountryId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("EmlakTuruId")
+                        .HasColumnType("integer");
+
+                    b.Property<double>("Fiyat")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("GorselLinki")
+                        .HasColumnType("text");
+
+                    b.Property<string>("IlanBasligi")
+                        .HasColumnType("text");
+
+                    b.Property<string>("IlanIcerigi")
+                        .HasColumnType("text");
+
+                    b.Property<byte>("OdaSayisi")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("Tur")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CityId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("EmlakTuruId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Ilans");
                 });
 
             modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.Role", b =>
@@ -190,6 +341,9 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Ad")
+                        .HasColumnType("text");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
@@ -203,6 +357,10 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
+
+                    b.Property<string>("FirmaAdi")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -228,6 +386,9 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Soyad")
                         .HasColumnType("text");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -301,6 +462,62 @@ namespace NUEVO.EmlakOfisi.Case.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.City", b =>
+                {
+                    b.HasOne("NUEVO.EmlakOfisi.Case.Entity.Country", "Country")
+                        .WithMany("Cities")
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.Ilan", b =>
+                {
+                    b.HasOne("NUEVO.EmlakOfisi.Case.Entity.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NUEVO.EmlakOfisi.Case.Entity.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NUEVO.EmlakOfisi.Case.Entity.EmlakTuru", "EmlakTuru")
+                        .WithMany()
+                        .HasForeignKey("EmlakTuruId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NUEVO.EmlakOfisi.Case.Entity.User", "User")
+                        .WithMany("Ilans")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("City");
+
+                    b.Navigation("Country");
+
+                    b.Navigation("EmlakTuru");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.Country", b =>
+                {
+                    b.Navigation("Cities");
+                });
+
+            modelBuilder.Entity("NUEVO.EmlakOfisi.Case.Entity.User", b =>
+                {
+                    b.Navigation("Ilans");
                 });
 #pragma warning restore 612, 618
         }

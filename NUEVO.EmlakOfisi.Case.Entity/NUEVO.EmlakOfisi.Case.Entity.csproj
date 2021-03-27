@@ -8,4 +8,9 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTO\Country\" />
+    <Folder Include="DTO\City\" />
+  </ItemGroup>
+
 </Project>

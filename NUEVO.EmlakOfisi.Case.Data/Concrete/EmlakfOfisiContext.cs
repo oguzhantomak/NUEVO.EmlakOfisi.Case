@@ -13,6 +13,10 @@ namespace NUEVO.EmlakOfisi.Case.Data.Concrete
 {
     public class EmlakfOfisiContext : IdentityDbContext<User, Role, int>
     {
+        public EmlakfOfisiContext()
+        {
+
+        }
         public EmlakfOfisiContext(DbContextOptions<EmlakfOfisiContext> options)
             : base(options)
         { }
@@ -39,5 +43,6 @@ namespace NUEVO.EmlakOfisi.Case.Data.Concrete
         public DbSet<Ilan> Ilans { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<EmlakTuru> EmlakTurus { get; set; }
     }
 }

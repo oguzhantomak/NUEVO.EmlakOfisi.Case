@@ -1,0 +1,99 @@
+﻿@model NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan.CreateIlanDto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>CreateIlanDto</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IlanBasligi" class="control-label"></label>
+                <input asp-for="IlanBasligi" class="form-control" />
+                <span asp-validation-for="IlanBasligi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IlanIcerigi" class="control-label"></label>
+                <input asp-for="IlanIcerigi" class="form-control" />
+                <span asp-validation-for="IlanIcerigi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fiyat" class="control-label"></label>
+                <input asp-for="Fiyat" class="form-control" />
+                <span asp-validation-for="Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Tur" /> @Html.DisplayNameFor(model => model.Tur)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="OdaSayisi" class="control-label"></label>
+                <input asp-for="OdaSayisi" class="form-control" />
+                <span asp-validation-for="OdaSayisi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BanyoSayisi" class="control-label"></label>
+                <input asp-for="BanyoSayisi" class="form-control" />
+                <span asp-validation-for="BanyoSayisi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BulunduguKat" class="control-label"></label>
+                <input asp-for="BulunduguKat" class="form-control" />
+                <span asp-validation-for="BulunduguKat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BinaToplamKatSayisi" class="control-label"></label>
+                <input asp-for="BinaToplamKatSayisi" class="form-control" />
+                <span asp-validation-for="BinaToplamKatSayisi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmlakTuruId" class="control-label">Emlak Türü</label>
+                <select asp-for="EmlakTuruId" class="form-control">
+                    @foreach (var item in Model.EmlakTurus)
+                    {
+                        <option value="@item.Id">@item.EmlakTuruAdi</option>
+                    }
+                </select>
+                @*<label asp-for="EmlakTuruId" class="control-label"></label>
+        <input asp-for="EmlakTuruId" class="form-control" />
+        <span asp-validation-for="EmlakTuruId" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label">Ülke</label>
+                <select asp-for="CountryId" class="form-control">
+                    @foreach (var item in Model.Countries)
+                    {
+                        <option value="@item.Id">@item.CountryName</option>
+                    }
+                </select>
+                @*<label asp-for="CountryId" class="control-label"></label>
+        <input asp-for="CountryId" class="form-control" />
+        <span asp-validation-for="CountryId" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label">Şehir</label>
+                <select asp-for="CityId" class="form-control">
+                    @foreach (var item in Model.Cities)
+                    {
+                        <option value="@item.Id">@item.CityName</option>
+                    }
+                </select>
+                @*<label asp-for="CityId" class="control-label"></label>
+        <input asp-for="CityId" class="form-control" />
+        <span asp-validation-for="CityId" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="İlan Oluştur" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+

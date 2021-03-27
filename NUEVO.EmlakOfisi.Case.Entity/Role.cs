@@ -9,6 +9,10 @@ namespace NUEVO.EmlakOfisi.Case.Entity
 {
     public class Role : IdentityRole<int>
     {
+        public Role()
+        {
+            CreatedDate = DateTime.UtcNow;
+        }
         /// <summary>
         /// Kaydın oluşturulma tarihi
         /// </summary>

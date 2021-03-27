@@ -2,6 +2,16 @@
 @{
     ViewData["Title"] = "Index";
 }
+@{
+    var data = TempData["status"].ToString();
+    if (data == "success")
+    {
+        Layout = "_Layout";
+    }
+}
+
+
+
 
 <h2>Index</h2>
-
+@TempData["status"]
