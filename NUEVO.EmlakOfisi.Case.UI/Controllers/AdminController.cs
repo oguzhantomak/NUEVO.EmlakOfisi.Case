@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using NUEVO.EmlakOfisi.Case.Data.Concrete;
 using NUEVO.EmlakOfisi.Case.Entity;
@@ -12,6 +13,7 @@ using NUEVO.EmlakOfisi.Case.Entity.DTO.User;
 
 namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         #region [ DI ]
@@ -221,7 +223,6 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     await _userManager.RemoveFromRoleAsync(user, item.RoleName);
                 }
             }
-
             return RedirectToAction("Emlakcilar");
         }
     }
