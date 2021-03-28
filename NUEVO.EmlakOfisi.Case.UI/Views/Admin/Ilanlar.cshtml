@@ -1,4 +1,4 @@
-﻿
+﻿@model List<NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan.ListIlanProfileDto>
 @{
     ViewData["Title"] = "Ilanlar";
     Layout = "~/Views/Shared/_LayoutAI.cshtml";
@@ -10,23 +10,34 @@
         <div class="card-box">
             <table id="datatable" class="table table-striped table-bordered">
                 <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>KOD</th>
-                    <th>ADI</th>
-                    <th>AÇIKLAMA</th>
-                    <th>OLUŞTURULMA TARİHİ</th>
-                </tr>
+                    <tr>
+                        <th>İlan Başlığı</th>
+                        <th>Metrekare</th>
+                        <th>Oda Sayısı</th>
+                        <th>Banyo Sayısı</th>
+                        <th>Şehir</th>
+                        <th>Ülke</th>
+                        <th>Emlakçı</th>
+                        <th>Oluşturma Tarihi</th>
+                    </tr>
                 </thead>
 
                 <tbody>
-                        <tr>
-                            <td>Id</td>
-                            <td>Code</td>
-                            <td>Name</td>
-                            <td>Description</td>
-                            <td>CreatedDate</td>
-                        </tr>
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.IlanBasligi</td>
+                                <td>@item.Metrekare</td>
+                                <td>@item.OdaSayisi</td>
+                                <td>@item.BanyoSayisi</td>
+                                <td>@item.CityName</td>
+                                <td>@item.CountryName</td>
+                                <td>@item.EmlakciAdi</td>
+                                <td>@item.OlusturmaTarihi</td>
+                            </tr>
+                        }
+                    }
                 </tbody>
             </table>
         </div>
