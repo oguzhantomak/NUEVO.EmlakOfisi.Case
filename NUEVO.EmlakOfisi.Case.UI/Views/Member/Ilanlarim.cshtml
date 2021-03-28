@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan.ListIlanProfileDto>
+@{
     Layout = "~/Views/Member/_MemberLayout.cshtml";
 }
 
@@ -54,13 +55,46 @@
             <table class="manage-table responsive-table">
 
                 <tr>
-                    <th><i class="fa fa-file-text"></i> Property</th>
-                    <th class="expire-date"><i class="fa fa-calendar"></i> Expiration Date</th>
+                    <th><i class="fa fa-file-text"></i> İlan</th>
+                    <th class="expire-date"><i class="fa fa-calendar"></i> Oluşturma Tarihi</th>
                     <th></th>
                 </tr>
 
                 <!-- Item #1 -->
-                <tr>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="title-container">
+                                <img src="@item.GorselLinki" alt="">
+                                <div class="title">
+                                    <h4><a href="#">@item.IlanBasligi</a></h4>
+                                    <span>@item.CityName , @item.CountryName </span>
+                                    <span class="table-property-price">Fiyat: @item.Fiyat</span>
+                                    <span>Metrekare: @item.Metrekare </span>
+                                    <span>Emlak Türü: @item.EmlakTuru </span>
+                                    @{
+                                        if (item.Tur)
+                                        {
+                                            <span>İlan Türü: Satılık </span>
+                                        }
+                                        else
+                                        {
+                                            <span>İlan Türü: Kiralık </span>
+                                        }
+                                    }
+                                    <span>Oda: @item.OdaSayisi - Banyo: @item.BanyoSayisi </span>
+                                </div>
+                            </td>
+                            <td class="expire-date">@item.OlusturmaTarihi.ToShortDateString()</td>
+                            <td class="action">
+                                <a href="#"><i class="fa fa-pencil"></i> Düzenle</a>
+                                <a href="#" class="delete"><i class="fa fa-remove"></i> Sil</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                <!--<tr>
                     <td class="title-container">
                         <img src="images/listing-02.jpg" alt="">
                         <div class="title">
@@ -75,10 +109,9 @@
                         <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
                         <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
                     </td>
-                </tr>
-
+                </tr>-->
                 <!-- Item #2 -->
-                <tr>
+                <!--<tr>
                     <td class="title-container">
                         <img src="images/listing-05.jpg" alt="">
                         <div class="title">
@@ -93,10 +126,9 @@
                         <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
                         <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
                     </td>
-                </tr>
-
+                </tr>-->
                 <!-- Item #3 -->
-                <tr>
+                <!--<tr>
                     <td class="title-container">
                         <img src="images/listing-04.jpg" alt="">
                         <div class="title">
@@ -111,10 +143,9 @@
                         <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
                         <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
                     </td>
-                </tr>
-
+                </tr>-->
                 <!-- Item #4 -->
-                <tr>
+                <!--<tr>
                     <td class="title-container">
                         <img src="images/listing-06.jpg" alt="">
                         <div class="title">
@@ -129,7 +160,7 @@
                         <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
                         <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
                     </td>
-                </tr>
+                </tr>-->
 
             </table>
             <a href="submit-property.html" class="margin-top-40 button">Submit New Property</a>

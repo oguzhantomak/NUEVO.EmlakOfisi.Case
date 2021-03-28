@@ -68,5 +68,7 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
         public int EmlakYasi { get; set; }
 
         public double Metrekare { get; set; }
+
+        public DateTime OlusturmaTarihi { get; set; }
     }
 }

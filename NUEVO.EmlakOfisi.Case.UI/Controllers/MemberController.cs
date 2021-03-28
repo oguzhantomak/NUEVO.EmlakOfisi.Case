@@ -121,7 +121,8 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     OdaSayisi = y.OdaSayisi,
                     Tur = y.Tur,
                     EmlakYasi = y.EmlakYasi,
-                    Metrekare = y.Metrekare
+                    Metrekare = y.Metrekare,
+                    OlusturmaTarihi = y.CreatedDate
                 }).ToList();
 
                 return list;
