@@ -51,6 +51,10 @@ namespace NUEVO.EmlakOfisi.Case.Entity
 
         public string GorselLinki { get; set; }
 
+        public int EmlakYasi { get; set; }
+
+        public double Metrekare { get; set; }
+
         #region [ Integrations ]
 
         #region [ Country ]

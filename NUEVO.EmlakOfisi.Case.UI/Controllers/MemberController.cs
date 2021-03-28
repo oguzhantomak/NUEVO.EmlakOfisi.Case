@@ -10,6 +10,7 @@ using NUEVO.EmlakOfisi.Case.Data.Concrete;
 using NUEVO.EmlakOfisi.Case.Entity;
 using NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan;
 using NUEVO.EmlakOfisi.Case.Entity.DTO.User;
+using Mapster;
 
 namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 {
@@ -22,12 +23,14 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         private readonly EmlakfOfisiContext _context;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public MemberController(EmlakfOfisiContext context, UserManager<User> userManager, RoleManager<Role> roleManager)
+        public MemberController(EmlakfOfisiContext context, UserManager<User> userManager, RoleManager<Role> roleManager, SignInManager<User> signInManager)
         {
             this._context = context;
             this._userManager = userManager;
             this._roleManager = roleManager;
+            this._signInManager = signInManager;
         }
 
         #endregion
@@ -43,16 +46,51 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         public IActionResult Profil()
         {
             var userId = User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
-            var user =_userManager.FindByIdAsync(userId).Result;
+            var user = _userManager.FindByIdAsync(userId).Result;
 
-            return View(user);
+            // veya aşağıdaki gibi name üzerinden çekebiliriz.
+            //var user2 = _userManager.FindByNameAsync(User.Identity.Name).Result;
+
+            // Mapster ile mapleme
+            var model = user.Adapt<UpdateUserDto>();
+
+            if (user != null)
+            {
+                ViewBag.layout = "~/Views/Member/_MemberLayout.cshtml";
+            }
+
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Profil(UpdateUserDto model)
+        public async Task<IActionResult> Profil(UpdateUserDto model)
         {
-            // TODO Profil update işlemi yapılacak.
-            return View();
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+                user.Ad = model.Ad;
+                user.Soyad = model.Soyad;
+                user.FirmaAdi = model.FirmaAdi;
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    await _userManager.UpdateSecurityStampAsync(user);
+                    await _signInManager.SignOutAsync();
+                    await _signInManager.SignInAsync(user, true);
+
+                    ViewBag.success = "true";
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("",item.Description);
+                    }
+                }
+            }
+            return View(model);
         }
 
         public IActionResult Ilanlarim()
@@ -81,11 +119,63 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     IlanBasligi = y.IlanBasligi,
                     IlanIcerigi = y.IlanIcerigi,
                     OdaSayisi = y.OdaSayisi,
-                    Tur = y.Tur
+                    Tur = y.Tur,
+                    EmlakYasi = y.EmlakYasi,
+                    Metrekare = y.Metrekare
                 }).ToList();
 
                 return list;
             }
+        }
+
+        public IActionResult PasswordChange()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult PasswordChange(PasswordChangeDto model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _userManager.FindByNameAsync(User.Identity.Name).Result;
+
+                //Kullanıcı eski şifresi doğruluk kontrolü
+                bool exist = _userManager.CheckPasswordAsync(user, model.OldPassword).Result;
+                if (exist)
+                {
+                    var result = _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword)
+                        .Result;
+
+                    if (result.Succeeded)
+                    {
+                        // Aşağıdaki işlemşer ile önce kullanıcının dbdeki security stampini yeni bilgiler ile değiştiriyoruz. Sonra kullanıcıyı signout yapıyoruz, daha sonra yeni şifre ile signin yapıp cookie'yi değiştirmiş oluyoruz.
+                        _userManager.UpdateSecurityStampAsync(user);
+
+                        _signInManager.SignOutAsync();
+                        _signInManager.PasswordSignInAsync(user, model.NewPassword, true, false);
+
+                        ViewBag.success = "true";
+                    }
+                    else
+                    {
+                        foreach (var item in result.Errors)
+                        {
+                            ModelState.AddModelError("", item.Description);
+                        }
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Eski şifreniz yanlış");
+                }
+            }
+            return View(model);
+        }
+
+        public void LogOut()
+        {
+            _signInManager.SignOutAsync();
         }
     }
 }

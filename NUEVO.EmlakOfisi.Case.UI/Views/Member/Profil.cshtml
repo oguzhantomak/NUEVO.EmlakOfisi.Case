@@ -1,4 +1,10 @@
-﻿@model NUEVO.EmlakOfisi.Case.Entity.User
+﻿@model UpdateUserDto
+@{
+    if (ViewBag.layout == "~/Views/Member/_MemberLayout.cshtml")
+    {
+        Layout = "~/Views/Member/_MemberLayout.cshtml";
+    }
+}
 @*@model IEnumerable<NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan.ListIlanProfileDto>
 
     @{
@@ -104,163 +110,128 @@
         </tbody>
     </table>*@
 
-<!DOCTYPE html>
-<head>
+@{
+    if (ViewBag.success == "true")
+    {
+        <div class="notification success closeable">
+            <p><span>İşlem Başarılı! </span> Bilgileriniz başarılı bir şekilde güncellenmiştir.</p>
+            <a class="close" href="#"></a>
+        </div>
+    }
+}
 
-    <!-- Basic Page Needs
-    ================================================== -->
-    <title>Findeo</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- CSS
-    ================================================== -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/color.css">
-
-</head>
-
-<body>
-
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <!-- Titlebar
+<!-- Titlebar
         ================================================== -->
-        <div id="titlebar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
+<div id="titlebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
 
-                        <h2>My Profile</h2>
+                <h2>Hesabım</h2>
 
-                        <!-- Breadcrumbs -->
-                        <nav id="breadcrumbs">
-                            <ul>
-                                <li><a href="#">Home</a></li>
-                                <li>My Profile</li>
-                            </ul>
-                        </nav>
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="/home">Anasayfa</a></li>
+                        <li>Hesabım</li>
+                    </ul>
+                </nav>
 
-                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+    <div class="row">
+
+
+        <!-- Widget -->
+        <div class="col-md-4">
+            <div class="sidebar left">
+
+                <div class="my-account-nav-container">
+
+                    <ul class="my-account-nav">
+                        <li class="sub-nav-title">Hesabım</li>
+                        <li><a href="/member/profil" class="current"><i class="sl sl-icon-user"></i> Profilim</a></li>
+                        <li><a href="/member/ilanlarim"><i class="sl sl-icon-docs"></i> İlanlarım</a></li>
+                        <li><a href="/ilan/create"><i class="sl sl-icon-action-redo"></i> Yeni İlan Oluştur</a></li>
+                        <li><a asp-action="PasswordChange" asp-controller="Member"><i class="sl sl-icon-lock"></i> Şifre Değiştir</a></li>
+                        <li><a asp-action="Logout" asp-controller="Member"><i class="sl sl-icon-power"></i> Çıkış Yap</a></li>
+                    </ul>
+
                 </div>
+
             </div>
         </div>
 
-
-        <!-- Content
-        ================================================== -->
-        <div class="container">
+        <div class="col-md-8">
             <div class="row">
 
 
-                <!-- Widget -->
-                <div class="col-md-4">
-                    <div class="sidebar left">
+                <div class="col-md-8 my-profile">
+                    <h4 class="margin-top-0 margin-bottom-30">Bilgilerim</h4>
 
-                        <div class="my-account-nav-container">
+                    @*<label>Ad</label>
+                        <input value="@Model.Ad" type="text">
 
-                            <ul class="my-account-nav">
-                                <li class="sub-nav-title">Hesabım</li>
-                                <li><a href="my-profile.html" class="current"><i class="sl sl-icon-user"></i> Profilim</a></li>
-                                <li><a href="/member/ilanlarim"><i class="sl sl-icon-docs"></i> İlanlarım</a></li>
-                                <li><a href="/ilan/create"><i class="sl sl-icon-action-redo"></i> Yeni İlan Oluştur</a></li>
-                                <li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Şifre Değiştir</a></li>
-                                <li><a href="#"><i class="sl sl-icon-power"></i> Çıkış Yap</a></li>
-                            </ul>
+                        <label>Soyad</label>
+                        <input value="@Model.Soyad" type="text">
 
+                        <label>Firma</label>
+                        <input value="@Model.FirmaAdi" type="text">
+
+                        <label>Email</label>
+                        <input value="@Model.Email" type="text">
+
+                        <button class="button margin-top-20 margin-bottom-20">Kaydet</button>*@
+
+                    <form asp-action="Profil">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="Ad" class="control-label"></label>
+                            <input asp-for="Ad" class="form-control" />
+                            <span asp-validation-for="Ad" class="text-danger"></span>
                         </div>
-
-                    </div>
+                        <div class="form-group">
+                            <label asp-for="Soyad" class="control-label"></label>
+                            <input asp-for="Soyad" class="form-control" />
+                            <span asp-validation-for="Soyad" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FirmaAdi" class="control-label"></label>
+                            <input asp-for="FirmaAdi" class="form-control" />
+                            <span asp-validation-for="FirmaAdi" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Kaydet ve Güncelle" class="btn btn-default" />
+                        </div>
+                    </form>
                 </div>
 
-                <div class="col-md-8">
-                    <div class="row">
-
-
-                        <div class="col-md-8 my-profile">
-                            <h4 class="margin-top-0 margin-bottom-30">My Account</h4>
-
-                            <label>Your Name</label>
-                            <input value="Jennie Wilson" type="text">
-
-                            <label>Your Title</label>
-                            <input value="Agent In New York" type="text">
-
-                            <label>Phone</label>
-                            <input value="(123) 123-456" type="text">
-
-                            <label>Email</label>
-                            <input value="jennie@example.com" type="text">
-
-
-                            <h4 class="margin-top-50 margin-bottom-25">About Me</h4>
-                            <textarea name="about" id="about" cols="30" rows="10">Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</textarea>
-
-
-                            <h4 class="margin-top-50 margin-bottom-0">Social</h4>
-
-                            <label><i class="fa fa-twitter"></i> Twitter</label>
-                            <input value="https://www.twitter.com/" type="text">
-
-                            <label><i class="fa fa-facebook-square"></i> Facebook</label>
-                            <input value="https://www.facebook.com/" type="text">
-
-                            <label><i class="fa fa-google-plus"></i> Google+</label>
-                            <input value="https://www.google.com/" type="text">
-
-                            <label><i class="fa fa-linkedin"></i> Linkedin</label>
-                            <input value="https://www.linkedin.com/" type="text">
-
-
-                            <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
-                        </div>
-
-                        <div class="col-md-4">
-                            <!-- Avatar -->
-                            <div class="edit-profile-photo">
-                                <img src="images/agent-02.jpg" alt="">
-                                <div class="change-photo-btn">
-                                    <div class="photoUpload">
-                                        <span><i class="fa fa-upload"></i> Upload Photo</span>
-                                        <input type="file" class="upload" />
-                                    </div>
-                                </div>
+                <!--<div class="col-md-4">-->
+                <!-- Avatar -->
+                <!--<div class="edit-profile-photo">
+                        <img src="images/agent-02.jpg" alt="">
+                        <div class="change-photo-btn">
+                            <div class="photoUpload">
+                                <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                <input type="file" class="upload" />
                             </div>
-
                         </div>
-
-
                     </div>
-                </div>
+
+                </div>-->
+
 
             </div>
         </div>
-        <!-- Back To Top Button -->
-        <div id="backtotop"><a href="#"></a></div>
-
-
-        <!-- Scripts
-        ================================================== -->
-        <script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
-        <script type="text/javascript" src="scripts/jquery-migrate-3.1.0.min.js"></script>
-        <script type="text/javascript" src="scripts/chosen.min.js"></script>
-        <script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-        <script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
-        <script type="text/javascript" src="scripts/rangeSlider.js"></script>
-        <script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
-        <script type="text/javascript" src="scripts/slick.min.js"></script>
-        <script type="text/javascript" src="scripts/masonry.min.js"></script>
-        <script type="text/javascript" src="scripts/mmenu.min.js"></script>
-        <script type="text/javascript" src="scripts/tooltips.min.js"></script>
-        <script type="text/javascript" src="scripts/custom.js"></script>
-
-
-
-
 
     </div>
-    <!-- Wrapper / End -->
-
-
-</body>
-</html>
+</div>
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>

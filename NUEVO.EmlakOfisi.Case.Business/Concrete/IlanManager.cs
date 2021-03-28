@@ -22,9 +22,9 @@ namespace NUEVO.EmlakOfisi.Case.Business.Concrete
 
         #endregion
 
-        public void Create(Ilan entity)
+        public Ilan Create(Ilan entity)
         {
-            _ilanRepository.Create(entity);
+           return _ilanRepository.Create(entity);
         }
     }
 }

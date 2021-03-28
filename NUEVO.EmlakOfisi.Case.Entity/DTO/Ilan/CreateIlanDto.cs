@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,7 +55,6 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
         /// </summary>
         public int EmlakTuruId { get; set; }
 
-
         public int CountryId { get; set; }
 
         public int CityId { get; set; }
@@ -71,5 +71,9 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
         public List<EmlakTuru> EmlakTurus { get; set; }
 
         public string GorselLinki { get; set; }
+
+        public int EmlakYasi { get; set; }
+
+        public double Metrekare { get; set; }
     }
 }

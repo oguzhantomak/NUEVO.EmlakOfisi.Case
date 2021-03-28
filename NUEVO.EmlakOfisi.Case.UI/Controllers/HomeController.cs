@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using NUEVO.EmlakOfisi.Case.Entity;
@@ -29,11 +30,22 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 
         public IActionResult Index()
         {
+            var userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+
+            if (userId != null && userId != 0)
+            {
+                ViewBag.layout = "~/Views/Member/_MemberLayout.cshtml";
+            }
             return View();
         }
 
         public IActionResult Login(string returnUrl)
         {
+            var userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+            if (userId != 0 && userId != 0)
+            {
+                return RedirectToAction("Profil","Member");
+            }
             // Kullanıcı login olduktan sonra hangi urlde kaldıysa oraya geri yönlendirilecek url
             TempData["ReturnUrl"] = returnUrl;
             return View();

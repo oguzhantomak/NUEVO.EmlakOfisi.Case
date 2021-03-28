@@ -64,5 +64,9 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
         public int UserId { get; set; }
 
         public string GorselLinki { get; set; }
+
+        public int EmlakYasi { get; set; }
+
+        public double Metrekare { get; set; }
     }
 }

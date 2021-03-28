@@ -14,6 +14,7 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.User
         public string Username { get; set; }
 
         [Display(Name = "Şifre"), DataType(DataType.Password)]
+        [Required]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Firma adı gereklidir!")]

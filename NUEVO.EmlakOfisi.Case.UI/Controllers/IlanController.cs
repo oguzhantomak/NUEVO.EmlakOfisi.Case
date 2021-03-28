@@ -29,6 +29,13 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 
         public IActionResult Create()
         {
+            var userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+
+            if (userId != null && userId != 0)
+            {
+                ViewBag.layout = "~/Views/Member/_MemberLayout.cshtml";
+            }
+
             var model = new CreateIlanDto()
             {
                 EmlakTurus = _context.Set<EmlakTuru>().ToList(),
@@ -64,16 +71,26 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                         OdaSayisi = model.OdaSayisi,
                         Tur = model.Tur,
                         UserId = userId,
-                        GorselLinki = model.GorselLinki
+                        GorselLinki = model.GorselLinki,
+                        EmlakYasi = model.EmlakYasi,
+                        Metrekare = model.Metrekare
                     };
 
-                    //var result = _ilanService.Create(ilan);
+                    var result = _ilanService.Create(ilan);
 
-                    using (var context = new EmlakfOfisiContext())
+                    //using (var context = new EmlakfOfisiContext())
+                    //{
+                    //    context.Set<Ilan>().Add(ilan);
+                    //    context.SaveChanges();
+                    //};
+                    if (result != null)
                     {
-                        context.Set<Ilan>().Add(ilan);
-                        context.SaveChanges();
-                    };
+                        return RedirectToAction("Ilanlarim", "Member");
+                    }
+                    else
+                    {
+                        return View(model);
+                    }
 
                 }
                 catch (Exception e)

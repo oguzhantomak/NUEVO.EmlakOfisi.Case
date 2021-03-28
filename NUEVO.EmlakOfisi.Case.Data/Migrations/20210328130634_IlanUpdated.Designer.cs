@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NUEVO.EmlakOfisi.Case.Data.Concrete;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -9,9 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace NUEVO.EmlakOfisi.Case.Data.Migrations
 {
     [DbContext(typeof(EmlakfOfisiContext))]
-    partial class EmlakfOfisiContextModelSnapshot : ModelSnapshot
+    [Migration("20210328130634_IlanUpdated")]
+    partial class IlanUpdated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

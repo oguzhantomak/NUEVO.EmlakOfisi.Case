@@ -32,8 +32,8 @@ namespace NUEVO.EmlakOfisi.Case.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped(typeof(IIlanRepository), typeof(EfCoreIlanRepository));
-            services.AddScoped(typeof(IIlanService), typeof(IlanManager));
+            services.AddScoped<IIlanRepository, EfCoreIlanRepository>();
+            services.AddScoped<IIlanService, IlanManager>();
 
             services.AddControllersWithViews();
 
@@ -73,6 +73,7 @@ namespace NUEVO.EmlakOfisi.Case.UI
             services.ConfigureApplicationCookie(opts =>
             {
                 opts.LoginPath = new PathString("/Home/Login");
+                opts.LogoutPath = new PathString("/Member/Logout");
                 opts.Cookie = cookieBuilder;
                 opts.SlidingExpiration = true;
                 opts.ExpireTimeSpan = System.TimeSpan.FromDays(60);

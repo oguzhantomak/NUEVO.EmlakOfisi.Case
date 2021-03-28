@@ -9,6 +9,6 @@ namespace NUEVO.EmlakOfisi.Case.Business.Abstract
 {
     public interface IIlanService
     {
-        void Create(Ilan entity);
+        Ilan Create(Ilan entity);
     }
 }

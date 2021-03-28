@@ -8,5 +8,12 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.User
 {
     public class UpdateUserDto
     {
+        public string Ad { get; set; }
+
+        public string Soyad { get; set; }
+
+        public string FirmaAdi { get; set; }
+
+        public string Email { get; set; }
     }
 }

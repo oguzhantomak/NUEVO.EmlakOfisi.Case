@@ -8,6 +8,6 @@ namespace NUEVO.EmlakOfisi.Case.Data.Abstract
 {
     public interface IRepository<T>
     { 
-        void Create(T entity);
+        T Create(T entity);
     }
 }

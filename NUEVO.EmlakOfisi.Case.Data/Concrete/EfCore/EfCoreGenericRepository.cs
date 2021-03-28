@@ -12,12 +12,14 @@ namespace NUEVO.EmlakOfisi.Case.Data.Concrete.EfCore
     where TEntity : class // TEntity bir class olmak zorunda
     where TContext : DbContext, new() //Tcontext bir Dbcontext olmak zorunda ve newlenebilir.
     {
-        public void Create(TEntity entity)
+        public TEntity Create(TEntity entity)
         {
             using (var context = new TContext())
             {
                 context.Set<TEntity>().Add(entity);
                 context.SaveChanges();
+
+                return entity;
             }
         }
     }
