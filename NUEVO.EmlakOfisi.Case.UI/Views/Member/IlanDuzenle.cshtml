@@ -1,22 +1,19 @@
-﻿@model NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan.CreateIlanDto
+﻿@model NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan.UpdateIlanDto
 
 @{
-    ViewData["Title"] = "Create";
-    if (ViewBag.layout == "~/Views/Member/_MemberLayout.cshtml")
-    {
-        Layout = "~/Views/Member/_MemberLayout.cshtml";
-    }
+    ViewData["Title"] = "IlanDuzenle";
+    Layout = "~/Views/Member/_MemberLayout.cshtml";
 }
 
-<h2>İlan Oluştur</h2>
+<h2>Ilan Düzenle</h2>
 <hr />
 @*<div class="row">
         <div class="col-md-4">
-            <form asp-action="Create">
+            <form asp-action="IlanDuzenle">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="IlanBasligi" class="control-label"></label>
-                    <input asp-for="IlanBasligi" class="form-control" />
+                    <input asp-for="IlanBasligi" class="form-controlhi" />
                     <span asp-validation-for="IlanBasligi" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -47,69 +44,33 @@
                     <span asp-validation-for="BanyoSayisi" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="BulunduguKat" class="control-label"></label>
-                    <input asp-for="BulunduguKat" class="form-control" />
-                    <span asp-validation-for="BulunduguKat" class="text-danger"></span>
+                    <label asp-for="Metrekare" class="control-label"></label>
+                    <input asp-for="Metrekare" class="form-control" />
+                    <span asp-validation-for="Metrekare" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="BinaToplamKatSayisi" class="control-label"></label>
-                    <input asp-for="BinaToplamKatSayisi" class="form-control" />
-                    <span asp-validation-for="BinaToplamKatSayisi" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="EmlakTuruId" class="control-label">Emlak Türü</label>
-                    <select asp-for="EmlakTuruId" class="form-control">
-                        @foreach (var item in Model.EmlakTurus)
-                        {
-                            <option value="@item.Id">@item.EmlakTuruAdi</option>
-                        }
-                    </select>
-    <label asp-for="EmlakTuruId" class="control-label"></label>
-        <input asp-for="EmlakTuruId" class="form-control" />
-        <span asp-validation-for="EmlakTuruId" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="CountryId" class="control-label">Ülke</label>
-        <select asp-for="CountryId" class="form-control">
-            @foreach (var item in Model.Countries)
-            {
-                <option value="@item.Id">@item.CountryName</option>
-            }
-        </select>
-    <label asp-for="CountryId" class="control-label"></label>
-        <input asp-for="CountryId" class="form-control" />
-        <span asp-validation-for="CountryId" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="CityId" class="control-label">Şehir</label>
-        <select asp-for="CityId" class="form-control">
-            @foreach (var item in Model.Cities)
-            {
-                <option value="@item.Id">@item.CityName</option>
-            }
-        </select>
-    <label asp-for="CityId" class="control-label"></label>
-        <input asp-for="CityId" class="form-control" />
-        <span asp-validation-for="CityId" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="İlan Oluştur" class="btn btn-default" />
-    </div>
-    </form>
-    </div>
-    </div>*@
-<!-- Titlebar
-================================================== -->
-<div id="titlebar" class="submit-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2><i class="fa fa-plus-circle"></i> Yeni İlan Oluştur</h2>
-            </div>
-        </div>
-    </div>
-</div>
 
+                <input type="hidden" asp-for="IlanId"/>
+                <div class="form-group">
+                    <label asp-for="CityId" class="control-label"></label>
+                    <input asp-for="CityId" class="form-control" />
+                    <span asp-validation-for="CityId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CountryId" class="control-label"></label>
+                    <input asp-for="CountryId" class="form-control" />
+                    <span asp-validation-for="CountryId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="EmlakTuruId" class="control-label"></label>
+                    <input asp-for="EmlakTuruId" class="form-control" />
+                    <span asp-validation-for="EmlakTuruId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Güncelle" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>*@
 
 <!-- Content
 ================================================== -->
@@ -119,7 +80,9 @@
         <!-- Submit Page -->
         <div class="col-md-12">
             <div class="submit-page">
-                <form asp-action="Create">
+                <form asp-action="IlanDuzenle">
+                    @*<input type="hidden" asp-for="IlanId" />*@
+                    <input type="hidden" name="IlanId" value="@Model.Id" />
                     <!-- Section -->
                     <h3>Emlak Bilgileri</h3>
                     <div class="submit-section">
@@ -131,6 +94,11 @@
                             <input asp-for="IlanBasligi" class="form-control" />
 
                         </div>
+                        @*<div class="form-group">
+                            <label asp-for="IlanId" class="control-label"></label>
+                            <input asp-for="IlanId" class="form-control" />
+                            <span asp-validation-for="IlanId" class="text-danger"></span>
+                        </div>*@
                         <div class="form-group">
                             <h5>İlan Görsel Linki <i class="tip" data-tip-content="İlana ait görsel linkini bu alana giriniz."></i></h5>
                             @*<input class="search-field" type="text" value="" />*@
@@ -248,12 +216,16 @@
                     <div class="divider"></div>
                     @*<a href="#" class="button preview margin-top-5">Preview <i class="fa fa-arrow-circle-right"></i></a>*@
                     <div class="form-group">
-                        <input type="submit" value="İlan Oluştur" class="btn btn-default" />
+                        <input type="submit" value="İlan Güncelle" class="btn btn-default" />
                     </div>
                 </form>
             </div>
         </div>
 
     </div>
+</div>
+
+<div>
+    <a asp-action="Ilanlarim">İlanlarıma Dön</a>
 </div>
 

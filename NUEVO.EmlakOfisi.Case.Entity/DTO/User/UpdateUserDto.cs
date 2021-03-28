@@ -15,5 +15,9 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.User
         public string FirmaAdi { get; set; }
 
         public string Email { get; set; }
+
+        public string UserName { get; set; }
+
+        public int Id { get; set; }
     }
 }

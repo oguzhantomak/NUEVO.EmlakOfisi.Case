@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -11,6 +12,7 @@ using NUEVO.EmlakOfisi.Case.Entity;
 using NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan;
 using NUEVO.EmlakOfisi.Case.Entity.DTO.User;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 {
@@ -86,7 +88,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                 {
                     foreach (var item in result.Errors)
                     {
-                        ModelState.AddModelError("",item.Description);
+                        ModelState.AddModelError("", item.Description);
                     }
                 }
             }
@@ -100,6 +102,67 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
             var list = GetList(Convert.ToInt32(userId));
 
             return View(list);
+        }
+
+        [HttpGet("member/ilanduzenle/{id}")]
+        public IActionResult IlanDuzenle(int id)
+        {
+            var ilanlar = _context.Set<Ilan>().ToList();
+            var ilan = ilanlar.Find(p => p.Id == id);
+
+
+
+            if (ilan != null)
+            {
+                var model = ilan.Adapt<UpdateIlanDto>();
+
+                model.EmlakTurus = _context.Set<EmlakTuru>().ToList();
+                model.Cities = _context.Set<City>().ToList();
+                model.Countries = _context.Set<Country>().ToList();
+
+                return View(model);
+            }
+            return RedirectToAction("Profil");
+        }
+
+        [HttpPost]
+        public IActionResult IlanDuzenle(UpdateIlanDto model)
+        {
+            var ilanlar = _context.Set<Ilan>().ToList();
+
+            if (model.Id != null && model.Id != 0)
+            {
+                var ilan = ilanlar.Find(p => p.Id == model.Id);
+
+                ilan.BanyoSayisi = model.BanyoSayisi;
+                ilan.Metrekare = model.Metrekare;
+                ilan.Fiyat = model.Fiyat;
+                ilan.CityId = model.CityId;
+                ilan.CountryId = model.CountryId;
+                ilan.EmlakTuruId = model.EmlakTuruId;
+                ilan.IlanBasligi = model.IlanBasligi;
+                ilan.OdaSayisi = model.OdaSayisi;
+                ilan.GorselLinki = model.GorselLinki;
+
+                _context.Entry(ilan).State = EntityState.Modified;
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Ilanlarim");
+
+        }
+
+        public IActionResult IlanSil(int id)
+        {
+            var ilanlar = _context.Set<Ilan>().ToList();
+            var ilan = ilanlar.Find(p => p.Id == id);
+
+            if (ilan != null)
+            {
+                _context.Set<Ilan>().Remove(ilan);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Ilanlarim");
         }
 
         public List<ListIlanProfileDto> GetList(int userId)
@@ -122,7 +185,9 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     Tur = y.Tur,
                     EmlakYasi = y.EmlakYasi,
                     Metrekare = y.Metrekare,
-                    OlusturmaTarihi = y.CreatedDate
+                    OlusturmaTarihi = y.CreatedDate,
+                    IlanId = y.Id
+
                 }).ToList();
 
                 return list;

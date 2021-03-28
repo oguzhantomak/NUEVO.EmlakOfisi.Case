@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
 {
-    public class ListIlanProfileDto
+    public class UpdateIlanDto
     {
         /// <summary>
         /// İlana ait başlık
@@ -39,42 +39,23 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
         /// </summary>
         public byte BanyoSayisi { get; set; }
 
-        /// <summary>
-        /// İlanın bulunduğu kat
-        /// </summary>
-        public byte? BulunduguKat { get; set; }
-
-        /// <summary>
-        /// İlandaki emlağın bulunduğu binanın kat sayısı
-        /// </summary>
-        public byte? BinaToplamKatSayisi { get; set; }
-
-        /// <summary>
-        /// İlandaki emlağın türü: ev, ofis vb.
-        /// </summary>
-        public int EmlakTuruId { get; set; }
-
-
-        public string CountryName { get; set; }
-
-        public string CityName { get; set; }
-
-        public string EmlakTuru { get; set; }
-
-        public int UserId { get; set; }
-
-        public string GorselLinki { get; set; }
-
-        public int EmlakYasi { get; set; }
-
         public double Metrekare { get; set; }
 
-        public DateTime OlusturmaTarihi { get; set; }
+        public int Id { get; set; }
 
-        public string EmlakciAdi { get; set; }
+        public int CityId { get; set; }
+        public int CountryId { get; set; }
+        public int EmlakTuruId { get; set; }
+        public string GorselLinki { get; set; }
 
-        public string EmlakciSoyadi { get; set; }
+        [Display(Name = "Ülke")]
+        public List<Country> Countries { get; set; }
 
-        public int IlanId { get; set; }
+        [Display(Name = "Şehir")]
+        public List<City> Cities { get; set; }
+
+        [Display(Name = "Emlak Türü")]
+        public List<EmlakTuru> EmlakTurus { get; set; }
+
     }
 }

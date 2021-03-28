@@ -69,10 +69,12 @@
                                 <img src="@item.GorselLinki" alt="">
                                 <div class="title">
                                     <h4><a href="#">@item.IlanBasligi</a></h4>
+                                    <span>İlan Id: @item.IlanId </span>
                                     <span>@item.CityName , @item.CountryName </span>
                                     <span class="table-property-price">Fiyat: @item.Fiyat</span>
                                     <span>Metrekare: @item.Metrekare </span>
                                     <span>Emlak Türü: @item.EmlakTuru </span>
+
                                     @{
                                         if (item.Tur)
                                         {
@@ -87,81 +89,25 @@
                                 </div>
                             </td>
                             <td class="expire-date">@item.OlusturmaTarihi.ToShortDateString()</td>
+                            @*<td class="action">
+                                <a class="delete" asp-action="IlanDuzenle" asp-route-id="@item.IlanId">Güncelle</a>
+                            </td>*@
                             <td class="action">
-                                <a href="#"><i class="fa fa-pencil"></i> Düzenle</a>
-                                <a href="#" class="delete"><i class="fa fa-remove"></i> Sil</a>
+                                @*<form asp-action="IlanDuzenle" asp-route-id="@item.IlanId" method="post">
+                                    <button class="btn btn-success" type="submit">Güncelle</button>
+                                </form>*@
+                                <a href="/member/ilanduzenle/@item.IlanId" class="btn btn-primary">Güncelle</a>
+                            </td>
+
+                            <td class="action">
+                                <form asp-action="IlanSil" asp-route-id="@item.IlanId" method="post">
+                                    <button class="btn btn-dark" type="submit">Sil</button>
+                                    @*<a class="delete" type="submit"><i class="fa fa-remove"></i> Sil</a>*@
+                                </form>
                             </td>
                         </tr>
                     }
                 }
-                <!--<tr>
-                    <td class="title-container">
-                        <img src="images/listing-02.jpg" alt="">
-                        <div class="title">
-                            <h4><a href="#">Serene Uptown</a></h4>
-                            <span>6 Bishop Ave. Perkasie, PA </span>
-                            <span class="table-property-price">$900 / monthly</span>
-                        </div>
-                    </td>
-                    <td class="expire-date">December 30, 2016</td>
-                    <td class="action">
-                        <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                        <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                        <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-                    </td>
-                </tr>-->
-                <!-- Item #2 -->
-                <!--<tr>
-                    <td class="title-container">
-                        <img src="images/listing-05.jpg" alt="">
-                        <div class="title">
-                            <h4><a href="#">Oak Tree Villas</a></h4>
-                            <span>71 Lower River Dr. Bronx, NY</span>
-                            <span class="table-property-price">$535,000</span>
-                        </div>
-                    </td>
-                    <td class="expire-date">December 12, 2016</td>
-                    <td class="action">
-                        <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                        <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                        <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-                    </td>
-                </tr>-->
-                <!-- Item #3 -->
-                <!--<tr>
-                    <td class="title-container">
-                        <img src="images/listing-04.jpg" alt="">
-                        <div class="title">
-                            <h4><a href="#">Selway Apartments</a></h4>
-                            <span>33 William St. Northbrook, IL </span>
-                            <span class="table-property-price">$420,000</span>
-                        </div>
-                    </td>
-                    <td class="expire-date">December 04, 2016</td>
-                    <td class="action">
-                        <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                        <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                        <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-                    </td>
-                </tr>-->
-                <!-- Item #4 -->
-                <!--<tr>
-                    <td class="title-container">
-                        <img src="images/listing-06.jpg" alt="">
-                        <div class="title">
-                            <h4><a href="#">Old Town Manchester</a></h4>
-                            <span> 7843 Durham Avenue, MD  </span>
-                            <span class="table-property-price">$420,000</span>
-                        </div>
-                    </td>
-                    <td class="expire-date">November 27, 2016</td>
-                    <td class="action">
-                        <a href="#"><i class="fa fa-pencil"></i> Edit</a>
-                        <a href="#"><i class="fa  fa-eye-slash"></i> Hide</a>
-                        <a href="#" class="delete"><i class="fa fa-remove"></i> Delete</a>
-                    </td>
-                </tr>-->
-
             </table>
             <a href="submit-property.html" class="margin-top-40 button">Submit New Property</a>
         </div>

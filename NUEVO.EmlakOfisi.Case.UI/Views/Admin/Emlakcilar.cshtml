@@ -62,9 +62,9 @@
                     </form>
                 </div>
                 @*<div class="col-sm-4">
-                    <a href="#custom-modal" class="btn btn-default btn-md waves-effect waves-light m-b-30" data-animation="fadein" data-plugin="custommodal"
-                       data-overlaySpeed="200" data-overlayColor="#36404a"><i class="md md-add"></i> Add Customer</a>
-                </div>*@
+                        <a href="#custom-modal" class="btn btn-default btn-md waves-effect waves-light m-b-30" data-animation="fadein" data-plugin="custommodal"
+                           data-overlaySpeed="200" data-overlayColor="#36404a"><i class="md md-add"></i> Add Customer</a>
+                    </div>*@
             </div>
 
             <div class="table-responsive">
@@ -72,11 +72,12 @@
                     <thead>
                         <tr>
                             <th>Görsel</th>
+                            <th>Id</th>
                             <th>Ad</th>
                             <th>Soyad</th>
                             <th>Firma Adı</th>
                             <th>Email</th>
-                            <th>Düzenle</th>
+                            <th>Rol Ata</th>
                         </tr>
                     </thead>
 
@@ -89,7 +90,9 @@
 
                                         <img src="https://placeimg.com/200/200/people" alt="contact-img" title="contact-img" class="img-circle thumb-sm" />
                                     </td>
-
+                                    <td>
+                                        @item.Id
+                                    </td>
                                     <td>
                                         @item.Ad
                                     </td>
@@ -103,9 +106,12 @@
                                     <td>
                                         <a href="#">@item.Email</a>
                                     </td>
+                                    @*<td>
+                                            <a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
+                                            <a href="#" class="table-action-btn"><i class="md md-close"></i></a>
+                                        </td>*@
                                     <td>
-                                        <a href="#" class="table-action-btn"><i class="md md-edit"></i></a>
-                                        <a href="#" class="table-action-btn"><i class="md md-close"></i></a>
+                                        <a class="table-action-btn" asp-action="RoleAssing" asp-route-id="@item.Id"><i class="md md-assignment"></i></a>
                                     </td>
                                 </tr>
                             }

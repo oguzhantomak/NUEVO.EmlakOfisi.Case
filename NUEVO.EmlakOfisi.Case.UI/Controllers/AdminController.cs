@@ -159,7 +159,9 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     Ad = y.Ad,
                     Soyad = y.Soyad,
                     Email = y.Email,
-                    FirmaAdi = y.FirmaAdi
+                    FirmaAdi = y.FirmaAdi,
+                    Id = y.Id,
+                    UserName = y.UserName
                 }).ToList();
 
                 return list;
@@ -177,6 +179,50 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 
                 return list;
             }
+        }
+
+        public IActionResult RoleAssing(string id)
+        {
+
+            TempData["userId"] = id;
+            var user = _userManager.FindByIdAsync(id).Result;
+            ViewBag.userName = user.UserName;
+
+            var roller = _roleManager.Roles;
+            var userRoles = _userManager.GetRolesAsync(user).Result as List<string>;
+
+            var model = new List<RoleAssignDto>();
+
+            foreach (var role in roller)
+            {
+                var r = new RoleAssignDto();
+                r.RoleId = role.Id;
+                r.RoleName = role.Name;
+                r.Exist = userRoles.Contains(role.Name);
+
+                model.Add(r);
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RoleAssing(List<RoleAssignDto> model)
+        {
+            var user = _userManager.FindByIdAsync(TempData["userId"].ToString()).Result;
+            foreach (var item in model)
+            {
+                if (item.Exist)
+                {
+                    await _userManager.AddToRoleAsync(user, item.RoleName);
+                }
+                else
+                {
+                    await _userManager.RemoveFromRoleAsync(user, item.RoleName);
+                }
+            }
+
+            return RedirectToAction("Emlakcilar");
         }
     }
 }
