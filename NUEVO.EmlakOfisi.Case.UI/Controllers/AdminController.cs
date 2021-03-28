@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using NUEVO.EmlakOfisi.Case.Data.Concrete;
 using NUEVO.EmlakOfisi.Case.Entity;
 using NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan;
+using NUEVO.EmlakOfisi.Case.Entity.DTO.User;
 
 namespace NUEVO.EmlakOfisi.Case.UI.Controllers
 {
@@ -30,15 +31,52 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         }
         public IActionResult Ilanlar()
         {
-            // TODO Bütün ilanlar listelenecek.
             var ilanlar = GetList();
             return View(ilanlar);
         }
 
         public IActionResult Emlakcilar()
         {
-            //TODO Rolü emlakçı olanlar listelenecek.
+            var list = GetUserList();
+            return View(list);
+        }
+
+        public IActionResult EmlakciEkle()
+        {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EmlakciEkle(CreateUserDtoForAdmin model)
+        {
+            model.Password = "123456";
+            if (ModelState.IsValid)
+            {
+                User user = new User()
+                {
+                    UserName = model.Username,
+                    Ad = model.Ad,
+                    Email = model.Email,
+                    Soyad = model.Soyad,
+                    FirmaAdi = model.FirmaAdi
+                };
+                
+
+                var result = await _userManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Emlakcilar");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                }
+            }
+            return View(model);
         }
 
         public List<ListIlanProfileDto> GetList()
@@ -65,6 +103,22 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     EmlakciAdi = y.User.Ad,
                     EmlakciSoyadi = y.User.Soyad
                 }).OrderByDescending(x => x.OlusturmaTarihi).ToList();
+
+                return list;
+            }
+        }
+
+        public List<UpdateUserDto> GetUserList()
+        {
+            using (var ctx = new EmlakfOfisiContext())
+            {
+                var list = ctx.Set<User>().Select(y => new UpdateUserDto()
+                {
+                    Ad = y.Ad,
+                    Soyad = y.Soyad,
+                    Email = y.Email,
+                    FirmaAdi = y.FirmaAdi
+                }).ToList();
 
                 return list;
             }

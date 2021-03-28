@@ -17,6 +17,8 @@
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="~/assets/plugins/morris/morris.css">
     <link href="~/assets/plugins/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="~/assets/plugins/custombox/dist/custombox.min.css" rel="stylesheet">
+
 
     <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/core.css" rel="stylesheet" type="text/css" />
@@ -33,6 +35,10 @@
     <![endif]-->
 
     <script src="~/assets/js/modernizr.min.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
 </head>
 
@@ -70,115 +76,9 @@
 
 
                         <ul class="nav navbar-nav navbar-right pull-right">
-                            <li class="dropdown hidden-xs">
-                                <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="true">
-                                    <i class="icon-bell"></i> <span class="badge badge-xs badge-danger">3</span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-lg">
-                                    <li class="notifi-title"><span class="label label-default pull-right">New 3</span>Notification</li>
-                                    <li class="list-group nicescroll notification-list">
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-diamond fa-2x text-primary"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-cog fa-2x text-custom"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New settings</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-bell-o fa-2x text-danger"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">Updates</h5>
-                                                    <p class="m-0">
-                                                        <small>There are <span class="text-primary font-600">2</span> new updates available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-user-plus fa-2x text-info"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New user registered</h5>
-                                                    <p class="m-0">
-                                                        <small>You have 10 unread messages</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-diamond fa-2x text-primary"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">A new order has been placed A new order has been placed</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-
-                                        <!-- list item-->
-                                        <a href="javascript:void(0);" class="list-group-item">
-                                            <div class="media">
-                                                <div class="pull-left p-r-10">
-                                                    <em class="fa fa-cog fa-2x text-custom"></em>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5 class="media-heading">New settings</h5>
-                                                    <p class="m-0">
-                                                        <small>There are new settings available</small>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class="list-group-item text-right">
-                                            <small class="font-600">See all notifications</small>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            @*<a href="/home" class="button border">UI Anasayfa</a>*@
                             <li class="hidden-xs">
                                 <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="icon-size-fullscreen"></i></a>
-                            </li>
-                            <li class="hidden-xs">
-                                <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="icon-settings"></i></a>
                             </li>
                             <li class="dropdown">
                                 <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="~/assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
@@ -205,8 +105,8 @@
                     <ul>
 
                         <li class="text-muted menu-title">Menü</li>
-
-                        <li class="waves-effect"><a href="/admin/ilanlar"><i class="ti-home"></i>İlanlar</a></li>
+                        <li class="waves-effect"><a href="/home"><i class="ti-home"></i>UI ANASAYFA</a></li>
+                        <li class="waves-effect"><a href="/admin/ilanlar"><i class="ti-announcement"></i>İlanlar</a></li>
                         <li class="waves-effect"><a href="/admin/emlakcilar"><i class="ti-paint-bucket"></i>Emlakçılar</a></li>
                     </ul>
                     <div class="clearfix"></div>
@@ -230,9 +130,37 @@
             </div> <!-- content -->
 
             <footer class="footer text-right">
-                2015 © Ubold.
+                2021 © Oğuzhan TOMAK - oguzhantomak@gmail.com
             </footer>
+        </div>
+        <!-- Modal -->
+        <div id="custom-modal" class="modal-demo">
+            <button type="button" class="close" onclick="Custombox.close();">
+                <span>&times;</span><span class="sr-only">Close</span>
+            </button>
+            <h4 class="custom-modal-title">Emlakçı Ekle</h4>
+            <div class="custom-modal-text text-left">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    </div>
 
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="position">Contact number</label>
+                        <input type="text" class="form-control" id="position" placeholder="Enter number">
+                    </div>
+
+
+                    <button type="submit" class="btn btn-default waves-effect waves-light">Save</button>
+                    <button type="button" class="btn btn-danger waves-effect waves-light m-l-10">Cancel</button>
+                </form>
+            </div>
         </div>
 
 
@@ -393,6 +321,10 @@
 
     <script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="~/assets/plugins/datatables/dataTables.bootstrap.js"></script>
+
+    <!-- Modal-Effect -->
+    <script src="~/assets/plugins/custombox/dist/custombox.min.js"></script>
+    <script src="~/assets/plugins/custombox/dist/legacy.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
