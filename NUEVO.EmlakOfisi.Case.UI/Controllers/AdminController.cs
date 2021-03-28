@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using NUEVO.EmlakOfisi.Case.Data.Concrete;
 using NUEVO.EmlakOfisi.Case.Entity;
 using NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan;
+using NUEVO.EmlakOfisi.Case.Entity.DTO.Role;
 using NUEVO.EmlakOfisi.Case.Entity.DTO.User;
 
 namespace NUEVO.EmlakOfisi.Case.UI.Controllers
@@ -18,10 +19,13 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         private UserManager<User> _userManager { get; }
         private SignInManager<User> _signInManager { get; }
 
-        public AdminController(UserManager<User> userManager, SignInManager<User> signInManager)
+        private RoleManager<Role> _roleManager { get; }
+
+        public AdminController(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<Role> roleManager)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
+            this._roleManager = roleManager;
         }
 
         #endregion
@@ -60,7 +64,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     Soyad = model.Soyad,
                     FirmaAdi = model.FirmaAdi
                 };
-                
+
 
                 var result = await _userManager.CreateAsync(user, model.Password);
 
@@ -77,6 +81,44 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                 }
             }
             return View(model);
+        }
+
+        public IActionResult CreateRole()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateRole(CreateRoleDto model)
+        {
+            if (ModelState.IsValid)
+            {
+                var role = new Role()
+                {
+                    Name = model.Name
+                };
+
+                var result = _roleManager.CreateAsync(role).Result;
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Roller");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        public IActionResult Roller()
+        {
+            var list = GetRolesList();
+            return View(list);
         }
 
         public List<ListIlanProfileDto> GetList()
@@ -118,6 +160,19 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     Soyad = y.Soyad,
                     Email = y.Email,
                     FirmaAdi = y.FirmaAdi
+                }).ToList();
+
+                return list;
+            }
+        }
+
+        public List<CreateRoleDto> GetRolesList()
+        {
+            using (var ctx = new EmlakfOfisiContext())
+            {
+                var list = ctx.Set<Role>().Select(y => new CreateRoleDto()
+                {
+                    Name = y.Name
                 }).ToList();
 
                 return list;

@@ -178,5 +178,10 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         {
             _signInManager.SignOutAsync();
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }
