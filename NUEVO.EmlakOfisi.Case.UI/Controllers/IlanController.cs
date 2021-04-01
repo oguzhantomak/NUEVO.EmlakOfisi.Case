@@ -103,6 +103,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Detail(int? id)
         {
             if (id == null)
