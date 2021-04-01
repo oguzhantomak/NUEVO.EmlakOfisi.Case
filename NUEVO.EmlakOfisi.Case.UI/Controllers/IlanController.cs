@@ -103,9 +103,40 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Detail()
+        public IActionResult Detail(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var ilan = _context.Set<Ilan>().First(x => x.Id == id);
+            if (ilan == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var model = _context.Set<Ilan>().Where(x=>x.Id==id).Select(y => new ListIlanProfileDto()
+            {
+                Fiyat = y.Fiyat,
+                BanyoSayisi = y.BanyoSayisi,
+                CityName = y.City.CityName,
+                CountryName = y.Country.CountryName,
+                EmlakTuru = y.EmlakTuru.EmlakTuruAdi,
+                BinaToplamKatSayisi = y.BinaToplamKatSayisi,
+                BulunduguKat = y.BulunduguKat,
+                GorselLinki = y.GorselLinki,
+                IlanBasligi = y.IlanBasligi,
+                IlanIcerigi = y.IlanIcerigi,
+                OdaSayisi = y.OdaSayisi,
+                Tur = y.Tur,
+                EmlakYasi = y.EmlakYasi,
+                Metrekare = y.Metrekare,
+                OlusturmaTarihi = y.CreatedDate,
+                EmlakciAdi = y.User.Ad,
+                EmlakciSoyadi = y.User.Soyad
+            }).First();
+            return View(model);
         }
     }
 }

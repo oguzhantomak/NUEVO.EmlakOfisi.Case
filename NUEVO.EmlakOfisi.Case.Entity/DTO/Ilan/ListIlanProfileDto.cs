@@ -75,6 +75,6 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
 
         public string EmlakciSoyadi { get; set; }
 
-        public int IlanId { get; set; }
+        public int Id { get; set; }
     }
 }

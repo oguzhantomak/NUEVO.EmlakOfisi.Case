@@ -13,6 +13,7 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
         /// <summary>
         /// İlana ait başlık
         /// </summary>
+        [Required]
         public string IlanBasligi { get; set; }
 
         /// <summary>
@@ -23,11 +24,13 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
         /// <summary>
         /// İlanın fiyatı
         /// </summary>
+        [Required]
         public double Fiyat { get; set; }
 
         /// <summary>
         /// İlanın türü. Satılık, kiralık. True satılık, false kiralık
         /// </summary>
+        [Required]
         public bool Tur { get; set; }
 
         /// <summary>
@@ -53,6 +56,7 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
         /// <summary>
         /// İlandaki emlağın türü: ev, ofis vb.
         /// </summary>
+        [Required]
         public int EmlakTuruId { get; set; }
 
         public int CountryId { get; set; }
@@ -74,6 +78,7 @@ namespace NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan
 
         public int EmlakYasi { get; set; }
 
+        [Required]
         public double Metrekare { get; set; }
     }
 }

@@ -231,7 +231,8 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     Metrekare = y.Metrekare,
                     OlusturmaTarihi = y.CreatedDate,
                     EmlakciAdi = y.User.Ad,
-                    EmlakciSoyadi = y.User.Soyad
+                    EmlakciSoyadi = y.User.Soyad,
+                    Id = y.Id
                 }).OrderByDescending(x=>x.OlusturmaTarihi).ToList();
 
                 return list;

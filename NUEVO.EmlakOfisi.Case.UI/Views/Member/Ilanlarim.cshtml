@@ -69,7 +69,7 @@
                                 <img src="@item.GorselLinki" alt="">
                                 <div class="title">
                                     <h4><a href="#">@item.IlanBasligi</a></h4>
-                                    <span>İlan Id: @item.IlanId </span>
+                                    <span>İlan Id: @item.Id </span>
                                     <span>@item.CityName , @item.CountryName </span>
                                     <span class="table-property-price">Fiyat: @item.Fiyat</span>
                                     <span>Metrekare: @item.Metrekare </span>
@@ -96,11 +96,11 @@
                                 @*<form asp-action="IlanDuzenle" asp-route-id="@item.IlanId" method="post">
                                     <button class="btn btn-success" type="submit">Güncelle</button>
                                 </form>*@
-                                <a href="/member/ilanduzenle/@item.IlanId" class="btn btn-primary">Güncelle</a>
+                                <a href="/member/ilanduzenle/@item.Id" class="btn btn-primary">Güncelle</a>
                             </td>
 
                             <td class="action">
-                                <form asp-action="IlanSil" asp-route-id="@item.IlanId" method="post">
+                                <form asp-action="IlanSil" asp-route-id="@item.Id" method="post">
                                     <button class="btn btn-dark" type="submit">Sil</button>
                                     @*<a class="delete" type="submit"><i class="fa fa-remove"></i> Sil</a>*@
                                 </form>

@@ -1,0 +1,143 @@
+﻿@model NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan.ListIlanProfileDto
+
+@{
+    ViewData["Title"] = "Detail";
+
+    if (ViewBag.layout == "~/Views/Member/_MemberLayout.cshtml")
+    {
+        Layout = "~/Views/Member/_MemberLayout.cshtml";
+    }
+}
+
+<h2>Detail</h2>
+
+<div>
+    <h4>ListIlanProfileDto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IlanBasligi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IlanBasligi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IlanIcerigi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IlanIcerigi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tur)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tur)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OdaSayisi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OdaSayisi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BanyoSayisi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BanyoSayisi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BulunduguKat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BulunduguKat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BinaToplamKatSayisi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BinaToplamKatSayisi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmlakTuruId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmlakTuruId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CountryName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CityName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmlakTuru)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmlakTuru)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GorselLinki)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GorselLinki)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmlakYasi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmlakYasi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Metrekare)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Metrekare)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OlusturmaTarihi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OlusturmaTarihi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmlakciAdi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmlakciAdi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmlakciSoyadi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmlakciSoyadi)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

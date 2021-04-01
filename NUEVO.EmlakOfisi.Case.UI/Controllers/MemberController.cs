@@ -186,7 +186,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     EmlakYasi = y.EmlakYasi,
                     Metrekare = y.Metrekare,
                     OlusturmaTarihi = y.CreatedDate,
-                    IlanId = y.Id
+                    Id = y.Id
 
                 }).ToList();
 

@@ -22,88 +22,88 @@
                 @{
                     foreach (var item in Model)
                     {
-                        <!-- Listing Item -->
-                        <div class="carousel-item">
-                            <div class="listing-item">
+ <!-- Listing Item -->
+                    <div class="carousel-item">
+                        <div class="listing-item">
 
-                                <a href="single-property-page-1.html" class="listing-img-container">
+                            <a href="/ilan/detail/@item.Id" class="listing-img-container">
 
-                                    <div class="listing-badges">
-                                        <span class="featured">Featured</span>
-                                        @{
+                                <div class="listing-badges">
+                                    <span class="featured">Featured</span>
+                                    @{
                                             if (item.Tur)
                                             {
-                                                <span>Satılık</span>
+                                        <span>Satılık</span>
                                             }
                                             else
                                             {
-                                                <span>Kiralık</span>
+                                        <span>Kiralık</span>
                                             }
-                                        }
-                                    </div>
+                                    }
+                                </div>
 
-                                    <div class="listing-img-content">
-                                        @{
+                                <div class="listing-img-content">
+                                    @{
                                             if (item.Fiyat != 0)
                                             {
                                                 var listingPrice = item.Fiyat / item.Metrekare;
-                                                <span class="listing-price">₺@item.Fiyat <i>₺@listingPrice / m²</i></span>
+                                        <span class="listing-price">₺@item.Fiyat <i>₺@listingPrice / m²</i></span>
                                             }
                                             else
                                             {
-                                                <span class="listing-price">₺@item.Fiyat <i>₺0 / m²</i></span>
+                                        <span class="listing-price">₺@item.Fiyat <i>₺0 / m²</i></span>
                                             }
 
-                                        }
-                                    </div>
+                                    }
+                                </div>
 
-                                    <div class="listing-carousel">
-                                        @{
+                                <div class="listing-carousel">
+                                    @{
                                             if (item.GorselLinki == null)
                                             {
-                                                <div><img src="https://picsum.photos/400" alt=""></div>
+                                        <div><img src="https://picsum.photos/400" alt=""></div>
                                             }
                                             else
                                             {
-                                                <div><img src="@item.GorselLinki" alt=""></div>
+                                        <div><img src="@item.GorselLinki" alt=""></div>
                                             }
-                                        }
-                                        @*<div><img src="images/listing-01b.jpg" alt=""></div>
-                                            <div><img src="images/listing-01c.jpg" alt=""></div>*@
-                                    </div>
+                                    }
+                                    @*<div><img src="images/listing-01b.jpg" alt=""></div>
+                                        <div><img src="images/listing-01c.jpg" alt=""></div>*@
+                                </div>
 
-                                </a>
+                            </a>
 
-                                <div class="listing-content">
+                            <div class="listing-content">
 
-                                    <div class="listing-title">
-                                        <h4><a href="single-property-page-1.html">@item.IlanBasligi</a></h4>
-                                        @{
+                                <div class="listing-title">
+                                    <h4><a href="single-property-page-1.html">@item.IlanBasligi</a></h4>
+                                    @{
                                             var href = "https://www.google.com/maps/place/" + item.CityName;
-                                            <a href="@href" class="listing-address popup-gmaps">
-                                                <i class="fa fa-map-marker"></i>
-                                                @item.CityName, @item.CountryName
-                                            </a>
-                                        }
-
-                                    </div>
-
-                                    <ul class="listing-features">
-                                        <li>Metrekare <span>@item.Metrekare m²</span></li>
-                                        <li>Oda <span>@item.OdaSayisi</span></li>
-                                        <li>Banyo <span>@item.BanyoSayisi</span></li>
-                                    </ul>
-
-                                    <div class="listing-footer">
-                                        <a href="#"><i class="fa fa-user"></i> @item.EmlakciAdi</a>
-                                        <span><i class="fa fa-calendar-o"></i> @item.OlusturmaTarihi</span>
-                                    </div>
+                                        <a href="@href" class="listing-address popup-gmaps">
+                                            <i class="fa fa-map-marker"></i>
+                                            @item.CityName, @item.CountryName
+                                        </a>
+                                    }
 
                                 </div>
 
+                                <ul class="listing-features">
+                                    <li>Metrekare <span>@item.Metrekare m²</span></li>
+                                    <li>Oda <span>@item.OdaSayisi</span></li>
+                                    <li>Banyo <span>@item.BanyoSayisi</span></li>
+                                </ul>
+
+                                <div class="listing-footer">
+                                    <a href="#"><i class="fa fa-user"></i> @item.EmlakciAdi</a>
+                                    <span><i class="fa fa-calendar-o"></i> @item.OlusturmaTarihi</span>
+                                </div>
+
                             </div>
+
                         </div>
-                        <!-- Listing Item / End -->
+                    </div>
+ <!-- Listing Item / End -->
                     }
                 }
             </div>
