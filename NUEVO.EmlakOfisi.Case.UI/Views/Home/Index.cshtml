@@ -44,8 +44,16 @@
 
                                     <div class="listing-img-content">
                                         @{
-                                            var listingPrice = item.Fiyat / item.Metrekare;
-                                            <span class="listing-price">₺@item.Fiyat <i>₺@listingPrice / m²</i></span>
+                                            if (item.Fiyat != 0)
+                                            {
+                                                var listingPrice = item.Fiyat / item.Metrekare;
+                                                <span class="listing-price">₺@item.Fiyat <i>₺@listingPrice / m²</i></span>
+                                            }
+                                            else
+                                            {
+                                                <span class="listing-price">₺@item.Fiyat <i>₺0 / m²</i></span>
+                                            }
+
                                         }
                                     </div>
 

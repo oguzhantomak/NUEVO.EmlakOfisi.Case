@@ -101,5 +101,11 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
             }
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult Detail()
+        {
+            return View();
+        }
     }
 }

@@ -108,6 +108,12 @@ namespace NUEVO.EmlakOfisi.Case.UI
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
+                    name: "detail",
+                    pattern: "ilan/detail/{id?}",
+                    defaults: new {controller="Ilan", action="Detail"}
+                    );
+
+                endpoints.MapControllerRoute(
                     name: "ilanduzenle",
                     pattern: "member/ilanduzenle/{id?}",
                     defaults: new { controller = "Member", action = "IlanDuzenle" }
