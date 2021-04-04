@@ -90,7 +90,7 @@
         <!-- Header Container
         ================================================== -->
         <header id="header-container">
-            
+
             <div class="clearfix"></div>
             <!-- Topbar / End -->
             <!-- Header -->
@@ -147,8 +147,8 @@
                     <div class="right-side">
                         <!-- Header Widget -->
                         <div class="header-widget">
-                            <a asp-action="Login" class="sign-in"><i class="fa fa-user"></i>Giriş Yap</a>
-                            <a asp-action="SignUp" class="sign-in"><i class="fa fa-user"></i>Üye Ol</a>
+                            <a @*asp-action="Login"*@ href="/home/login" class="sign-in"><i class="fa fa-user"></i>Giriş Yap</a>
+                            <a @*asp-action="SignUp"*@ href="/home/signup" class="sign-in"><i class="fa fa-user"></i>Üye Ol</a>
                             @*<a asp-action="Create" asp-controller="Ilan" class="button medium"><i class="im im-icon-Add"></i>İlan Oluştur</a>*@
                         </div>
                         <!-- Header Widget / End -->
@@ -164,8 +164,8 @@
         <!-- Header Container / End -->
         <!-- Banner
         ================================================== -->
-        
-            @RenderBody()
+
+        @RenderBody()
 
         <!-- Footer
         ================================================== -->
@@ -222,7 +222,7 @@
                 <!-- Copyright -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
+                        <div class="copyrights">© 2021 Oğzuahn TOMAK.</div>
                     </div>
                 </div>
 
@@ -252,7 +252,6 @@
         <!-- Google Autocomplete -->
         <script>
             function initAutocomplete() {
-            function initAutocomplete() {
                 var input = document.getElementById('autocomplete-input');
                 var autocomplete = new google.maps.places.Autocomplete(input);
 
@@ -266,6 +265,7 @@
             }
         </script>
         <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2lcdw26qugo88thNVgmFkWWTJ4iRTvDQ"></script>
 
 
 

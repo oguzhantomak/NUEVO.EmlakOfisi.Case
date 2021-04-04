@@ -106,6 +106,13 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
         [AllowAnonymous]
         public IActionResult Detail(int? id)
         {
+            var userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
+
+            if (userId != null && userId != 0)
+            {
+                ViewBag.layout = "~/Views/Member/_MemberLayout.cshtml";
+            }
+
             if (id == null)
             {
                 return RedirectToAction("Index", "Home");

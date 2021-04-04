@@ -16,6 +16,8 @@
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
+    
+
 </head>
 
 <body>
@@ -90,7 +92,7 @@
         <!-- Header Container
         ================================================== -->
         <header id="header-container">
-            
+
             <!-- Header -->
             <div id="header">
                 <div class="container">
@@ -227,7 +229,7 @@
                 <!-- Copyright -->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
+                        <div class="copyrights">© 2021 Oğuzhan TOMAK.</div>
                     </div>
                 </div>
 
@@ -254,6 +256,11 @@
         <script type="text/javascript" src="~/scripts/tooltips.min.js"></script>
         <script type="text/javascript" src="~/scripts/custom.js"></script>
 
+        <!-- Maps -->
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+        <script type="text/javascript" src="~/scripts/infobox.min.js"></script>
+        <script type="text/javascript" src="~/scripts/markerclusterer.js"></script>
+        <script type="text/javascript" src="~/scripts/maps.js"></script>
 
         <!-- DropZone | Documentation: http://dropzonejs.com -->
         <script type="text/javascript" src="~/scripts/dropzone.js"></script>
@@ -263,7 +270,25 @@
             });
         </script>
 
+        <!-- Google Autocomplete -->
+        <!--<script>
+            function initAutocomplete() {
+                var input = document.getElementById('autocomplete-input');
+                var autocomplete = new google.maps.places.Autocomplete(input);
 
+                autocomplete.addListener('place_changed', function () {
+                    var place = autocomplete.getPlace();
+                    if (!place.geometry) {
+                        window.alert("No details available for input: '" + place.name + "'");
+                        return;
+                    }
+                });
+            }
+        </script>-->
+        @*<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>*@
+        @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD2lcdw26qugo88thNVgmFkWWTJ4iRTvDQ"></script>*@
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmuJRsDrvkaO2q90jbHp1oKpul_Hsyzok&callback=initMap&libraries=&v=weekly" async></script>
 
 
 

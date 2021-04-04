@@ -1,7 +1,7 @@
 ﻿@model NUEVO.EmlakOfisi.Case.Entity.DTO.Ilan.ListIlanProfileDto
 
 @{
-    ViewData["Title"] = "Detail";
+    ViewData["Title"] = "İlan Detay";
 
     if (ViewBag.layout == "~/Views/Member/_MemberLayout.cshtml")
     {
@@ -9,135 +9,415 @@
     }
 }
 
-<h2>Detail</h2>
+@*<div>
+        <h4>ListIlanProfileDto</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IlanBasligi)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IlanBasligi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.IlanIcerigi)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IlanIcerigi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Fiyat)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Tur)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Tur)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OdaSayisi)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OdaSayisi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BanyoSayisi)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BanyoSayisi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BulunduguKat)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BulunduguKat)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.BinaToplamKatSayisi)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.BinaToplamKatSayisi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmlakTuruId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EmlakTuruId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CountryName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CountryName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.CityName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CityName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmlakTuru)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EmlakTuru)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.UserId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.GorselLinki)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.GorselLinki)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmlakYasi)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EmlakYasi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Metrekare)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Metrekare)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.OlusturmaTarihi)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.OlusturmaTarihi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmlakciAdi)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EmlakciAdi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmlakciSoyadi)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EmlakciSoyadi)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>*@
 
-<div>
-    <h4>ListIlanProfileDto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IlanBasligi)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IlanBasligi)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IlanIcerigi)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IlanIcerigi)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Fiyat)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Fiyat)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Tur)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Tur)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OdaSayisi)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OdaSayisi)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BanyoSayisi)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BanyoSayisi)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BulunduguKat)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BulunduguKat)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.BinaToplamKatSayisi)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BinaToplamKatSayisi)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EmlakTuruId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EmlakTuruId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CountryName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CountryName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CityName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.CityName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EmlakTuru)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EmlakTuru)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.GorselLinki)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.GorselLinki)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EmlakYasi)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EmlakYasi)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Metrekare)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Metrekare)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.OlusturmaTarihi)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.OlusturmaTarihi)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EmlakciAdi)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EmlakciAdi)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.EmlakciSoyadi)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EmlakciSoyadi)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-    </dl>
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="property-titlebar margin-bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <a href="listings-list-with-sidebar.html" class="back-to-listings"></a>
+                <div class="property-title">
+                    <h2>
+                        @Model.IlanBasligi
+                        @{
+                            if (Model.Tur)
+                            {
+                                <span class="property-badge">Satılık</span>
+                            }
+                            else
+                            {
+                                <span class="property-badge">Kiralık</span>
+                            }
+                        }
+                    </h2>
+                    <span>
+                        <a href="#location" class="listing-address">
+                            <i class="fa fa-map-marker"></i>
+                            @Model.CityName, @Model.CountryName
+                        </a>
+                    </span>
+                </div>
+
+                <div class="property-pricing">
+                    <div class="property-price">₺@Model.Fiyat</div>
+                    <div class="sub-price">@Model.Metrekare m²</div>
+
+                    @{
+                        if (Model.Fiyat != 0)
+                        {
+                            var listingPrice = Model.Fiyat / Model.Metrekare;
+                            <div class="sub-price">₺@listingPrice / m²</div>
+                        }
+                        else
+                        {
+                            <div class="sub-price">₺0 / m²</div>
+
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+    <div class="row margin-bottom-50">
+        <div class="col-md-12">
+
+            <!-- Slider -->
+            <div class="property-slider default">
+                <a href="https://picsum.photos/1200" data-background-image="https://picsum.photos/1200" class="item mfp-gallery"></a>
+                <a href="https://picsum.photos/1200" data-background-image="https://picsum.photos/1200" class="item mfp-gallery"></a>
+                <a href="https://picsum.photos/1200" data-background-image="https://picsum.photos/1200" class="item mfp-gallery"></a>
+                <a href="https://picsum.photos/1200" data-background-image="https://picsum.photos/1200" class="item mfp-gallery"></a>
+                <a href="https://picsum.photos/1200" data-background-image="https://picsum.photos/1200" class="item mfp-gallery"></a>
+                <a href="https://picsum.photos/1200" data-background-image="https://picsum.photos/1200" class="item mfp-gallery"></a>
+            </div>
+
+            <!-- Slider Thumbs -->
+            <div class="property-slider-nav">
+                <div class="item"><img src="https://picsum.photos/1200" alt=""></div>
+                <div class="item"><img src="https://picsum.photos/1200" alt=""></div>
+                <div class="item"><img src="https://picsum.photos/1200" alt=""></div>
+                <div class="item"><img src="https://picsum.photos/1200" alt=""></div>
+                <div class="item"><img src="https://picsum.photos/1200" alt=""></div>
+                <div class="item"><img src="https://picsum.photos/1200" alt=""></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+
+        <!-- Property Description -->
+        <div class="col-lg-8 col-md-7 sp-content">
+            <div class="property-description">
+
+                <!-- Main Features -->
+                <ul class="property-main-features">
+                    <li>Metrekare <span>@Model.Metrekare m²</span></li>
+                    <li>Oda Sayısı <span>@Model.OdaSayisi</span></li>
+                    <li>Banyo Sayısı <span>@Model.BanyoSayisi</span></li>
+                    <li>Emlak Türü <span>@Model.EmlakTuru</span></li>
+                    @{
+                        if (Model.BinaToplamKatSayisi != 0 && Model.BinaToplamKatSayisi != null)
+                        {
+                            <li>Bina Toplam Kat Sayısı <span>@Model.BinaToplamKatSayisi</span></li>
+                        }
+                        else
+                        {
+                            <li>Bina Toplam Kat Sayısı <span>Belirtilmemiş.</span></li>
+                        }
+                    }
+                    @{
+                        if (Model.BulunduguKat != 0 && Model.BulunduguKat != null)
+                        {
+                            <li>Bulunduğu Kat <span>@Model.BulunduguKat</span></li>
+                        }
+                        else
+                        {
+                            <li>Bulunduğu Kat <span>Belirtilmemiş.</span></li>
+                        }
+                    }
+                </ul>
+
+
+                <!-- Description -->
+                <h3 class="desc-headline">İlan Bilgileri</h3>
+
+                @{
+                    if (Model.IlanIcerigi != null)
+                    {
+                        <div class="show-more">
+                            <p> @Model.IlanIcerigi</p>
+                            <a href="#" class="show-more-button">Daha fazlasını görüntüle. <i class="fa fa-angle-down"></i></a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <p>İlan içeriği belirtilmemiş. </p>
+                        </div>
+                    }
+                }
+
+                <!-- Details -->
+                <h3 class="desc-headline">Detay</h3>
+                <ul class="property-features margin-top-0">
+                    <li>Building Age: <span>2 Years</span></li>
+                    <li>Parking: <span>Attached Garage</span></li>
+                    <li>Cooling: <span>Central Cooling</span></li>
+                    <li>Heating: <span>Forced Air, Gas</span></li>
+                    <li>Sewer: <span>Public/City</span></li>
+                    <li>Water: <span>City</span></li>
+                    <li>Exercise Room: <span>Yes</span></li>
+                    <li>Storage Room: <span>Yes</span></li>
+                </ul>
+
+
+                <!-- Features -->
+                <h3 class="desc-headline">Features</h3>
+                <ul class="property-features checkboxes margin-top-0">
+                    <li>Air Conditioning</li>
+                    <li>Swimming Pool</li>
+                    <li>Central Heating</li>
+                    <li>Laundry Room</li>
+                    <li>Gym</li>
+                    <li>Alarm</li>
+                    <li>Window Covering</li>
+                    <li>Internet</li>
+                </ul>
+
+
+                <!-- Floorplans -->
+                <h3 class="desc-headline no-border">Floorplans</h3>
+                <!-- Accordion -->
+                <div class="style-1 fp-accordion">
+                    <div class="accordion">
+
+                        <h3>First Floor <span>460 sq ft</span> <i class="fa fa-angle-down"></i> </h3>
+                        <div>
+                            <a class="floor-pic mfp-image" href="https://i.imgur.com/kChy7IU.jpg">
+                                <img src="https://i.imgur.com/kChy7IU.jpg" alt="">
+                            </a>
+                            <p>Mauris mauris ante, blandit et, ultrices a, susceros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate aliquam egestas litora torquent conubia.</p>
+                        </div>
+
+                        <h3>Second Floor <span>440 sq ft</span> <i class="fa fa-angle-down"></i></h3>
+                        <div>
+                            <a class="floor-pic mfp-image" href="https://i.imgur.com/l2VNlwu.jpg">
+                                <img src="https://i.imgur.com/l2VNlwu.jpg" alt="">
+                            </a>
+                            <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. Nullam laoreet, velit ut taciti sociosqu condimentum feugiat.</p>
+                        </div>
+
+                        <h3>Garage <span>140 sq ft</span> <i class="fa fa-angle-down"></i></h3>
+                        <div>
+                            <a class="floor-pic mfp-image" href="https://i.imgur.com/0zJYERy.jpg">
+                                <img src="https://i.imgur.com/0zJYERy.jpg" alt="">
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- Video -->
+                <h3 class="desc-headline no-border">Video</h3>
+                <div class="responsive-iframe">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/UPBJKppEXoQ?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+
+                <!-- Location -->
+                <h3 class="desc-headline no-border" id="location">Location</h3>
+                <div id="propertyMap-container">
+                    <div id="propertyMap" data-latitude="40.7427837" data-longitude="-73.11445617675781"></div>
+                    <a href="#" id="streetView">Street View</a>
+                </div>
+            </div>
+        </div>
+        <!-- Property Description / End -->
+        <!-- Sidebar -->
+        <div class="col-lg-4 col-md-5 sp-sidebar">
+            <div class="sidebar sticky right">
+                <!-- Widget -->
+                <div class="widget">
+                    <!-- Agent Widget -->
+                    <div class="agent-widget">
+                        <div class="agent-title">
+                            <div class="agent-photo"><img src="images/agent-avatar.jpg" alt="" /></div>
+                            <div class="agent-details">
+                                <h4><a href="#">@Model.EmlakciAdi @Model.EmlakciSoyadi</a></h4>
+                                <span><i class="sl sl-icon-call-in"></i>(123) 123-456</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        @*<input type="text" placeholder="Your Email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$">*@
+                        <input type="text" placeholder="Your Phone">
+                        <textarea>I'm interested in this property [ID 123456] and I'd like to know more details.</textarea>
+                        <button class="button fullwidth margin-top-5">Send Message</button>
+                    </div>
+                    <!-- Agent Widget / End -->
+
+                </div>
+                <!-- Widget / End -->
+                <!-- Widget -->
+                <div class="widget">
+                    <h3 class="margin-bottom-30 margin-top-30">Kredi Hesaplayıcı</h3>
+
+                    <!-- Mortgage Calculator -->
+                    <form action="javascript:void(0);" autocomplete="off" class="mortgageCalc" data-calc-currency="TL">
+                        <div class="calc-input">
+                            <div class="pick-price tip" data-tip-content="Set This Property Price"></div>
+                            <input value="@Model.Fiyat" type="text" id="amount" name="amount" placeholder="Sale Price" required>
+                            <label for="amount" class="fa fa-turkish-lira"></label>
+                        </div>
+
+                        <div class="calc-input">
+                            <input type="text" id="downpayment" placeholder="Down Payment">
+                            <label for="downpayment" class="fa fa-turkish-lira"></label>
+                        </div>
+
+                        <div class="calc-input">
+                            <input type="text" id="years" placeholder="Loan Term (Years)" required>
+                            <label for="years" class="fa fa-calendar-o"></label>
+                        </div>
+
+                        <div class="calc-input">
+                            <input type="text" id="interest" placeholder="Interest Rate" required>
+                            <label for="interest" class="fa fa-percent"></label>
+                        </div>
+
+                        <button class="button calc-button" formvalidate>Calculate</button>
+                        <div class="calc-output-container"><div class="notification success">Monthly Payment: <strong class="calc-output"></strong></div></div>
+                    </form>
+                    <!-- Mortgage Calculator / End -->
+
+                </div>
+                <!-- Widget / End -->
+            </div>
+        </div>
+        <!-- Sidebar / End -->
+    </div>
 </div>
