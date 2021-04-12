@@ -9,7 +9,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Helper
 {
     public static class PasswordReset
     {
-        public static void PasswordResetSendEmail(string link)
+        public static void PasswordResetSendEmail(string link, string mail)
         {
             try
             {
@@ -17,7 +17,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Helper
 
                 SmtpClient smtpClient = new SmtpClient("mail.oguz.kim");
                 //SmtpClient smtpClient = new SmtpClient();
-                mail.From = new MailAddress("oguz@oguz.kim");
+                mail.From = new MailAddress(mail);
                 mail.To.Add("oguzhantomak@gmail.com");
 
                 mail.Subject = $"Şifre Sıfırlama Talebiniz";

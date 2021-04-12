@@ -49,7 +49,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
             var userId = Convert.ToInt32(User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value);
             if (userId != 0 && userId != 0)
             {
-                return RedirectToAction("Profil","Member");
+                return RedirectToAction("Profil", "Member");
             }
             // Kullanıcı login olduktan sonra hangi urlde kaldıysa oraya geri yönlendirilecek url
             TempData["ReturnUrl"] = returnUrl;
@@ -149,7 +149,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                 }, HttpContext.Request.Scheme);
 
                 // oluşturulan şifre yenileme linkini static metodumuza gönderip metotu çalıştırıyoruz.
-                Helper.PasswordReset.PasswordResetSendEmail(passwordResetLink);
+                Helper.PasswordReset.PasswordResetSendEmail(passwordResetLink, model.Email);
 
                 ViewBag.status = "success";
             }
@@ -233,7 +233,7 @@ namespace NUEVO.EmlakOfisi.Case.UI.Controllers
                     EmlakciAdi = y.User.Ad,
                     EmlakciSoyadi = y.User.Soyad,
                     Id = y.Id
-                }).OrderByDescending(x=>x.OlusturmaTarihi).ToList();
+                }).OrderByDescending(x => x.OlusturmaTarihi).ToList();
 
                 return list;
             }
